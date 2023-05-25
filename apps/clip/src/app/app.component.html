@@ -1,1 +1,14 @@
-<clip-nx-welcome></clip-nx-welcome> <router-outlet></router-outlet>
+<mat-toolbar class="mat-elevation-z2">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+   <mat-icon>link</mat-icon>
+ </button>
+ <span style="margin-right: 12px">CLiP</span>
+ <span class="example-spacer"></span>
+ <button style="margin: 2px" mat-flat-button color="primary" (click)="loadFeature(feature)" *ngFor="let feature of features$ | async">{{ feature.name }}</button>
+</mat-toolbar>
+
+<div style="padding: 8px">
+  <h1 class="dashboard-nav">CLiP Dashboard</h1>
+
+  <router-outlet></router-outlet>
+</div>

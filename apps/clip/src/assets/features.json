@@ -1,0 +1,12 @@
+[
+  {
+    "name": "telxl-users",
+    "description": "Manage your users, roles and permissions.  Using this feature you can configure new roles with permissions and assign roles to users",
+    "remoteUrl": "http://localhost:4201"
+  },
+  {
+    "name": "clip-feature-browser",
+    "description": "Manage all your clip features, you can enable & disable features as well as configure your new features",
+    "remoteUrl": "http://localhost:4202"
+  }
+]
