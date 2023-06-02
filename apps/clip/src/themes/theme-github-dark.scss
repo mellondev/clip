@@ -1,0 +1,181 @@
+@use '@angular/material' as mat;
+
+$black: #1b1f23;
+$white: #fff;
+
+// Gray
+$gray-0: #cdd9e5;
+$gray-1: #adbac7;
+$gray-2: #909dab;
+$gray-3: #768390;
+$gray-4: #636e7b;
+$gray-5: #545d68;
+$gray-6: #444c56;
+$gray-7: #373e47;
+$gray-8: #2d333b;
+$gray-9: #22272e;
+
+// -------- Fades --------
+$black-fade-10: rgba($black, 0.1);
+$black-fade-15: rgba($black, 0.15);
+$black-fade-30: rgba($black, 0.3);
+$black-fade-50: rgba($black, 0.5);
+$black-fade-70: rgba($black, 0.7);
+$black-fade-85: rgba($black, 0.85);
+
+$white-fade-10: rgba($white, 0.1);
+$white-fade-15: rgba($white, 0.15);
+$white-fade-30: rgba($white, 0.3);
+$white-fade-50: rgba($white, 0.5);
+$white-fade-70: rgba($white, 0.7);
+$white-fade-85: rgba($white, 0.85);
+
+$github-dark-primary: (
+  50: #c6e6ff,
+  100: #96d0ff,
+  200: #6cb6ff,
+  300: #539bf5,
+  400: #4184e4,
+  500: #316dca,
+  600: #255ab2,
+  700: #1b4b91,
+  800: #143d79,
+  900: #0f2d5c,
+  A100: #ffffff,
+  A200: #e6f9ff,
+  A400: #b3ebff,
+  A700: #9ae5ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$github-dark-accent: (
+  50: #f2f5f8,
+  100: #dfe6ec,
+  200: #cad5e0,
+  300: #b4c4d4,
+  400: #a4b7ca,
+  500: #94aac1,
+  600: #8ca3bb,
+  700: #8199b3,
+  800: #7790ab,
+  900: #657f9e,
+  A100: #ffffff,
+  A200: #deedff,
+  A400: #abd1ff,
+  A700: #91c4ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$github-dark-warn: (
+  50: #ffd8d3,
+  100: #ffb8b0,
+  200: #ff938a,
+  300: #f47067,
+  400: #e5534b,
+  500: #c93c37,
+  600: #ad2e2c,
+  700: #922323,
+  800: #78191b,
+  900: #78191b,
+  A100: #ffe5e7,
+  A200: #ffb2b7,
+  A400: #ff7f88,
+  A700: #ff6571,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$github-dark-background: (
+  status-bar: $gray-8,
+  app-bar: $gray-8,
+  background: $gray-9,
+  hover: $gray-6,
+  card: $gray-8,
+  dialog: $gray-8,
+  disabled-button: $gray-8,
+  raised-button: $gray-6,
+  focused-button: $gray-7,
+  selected-button: $gray-8,
+  selected-disabled-button: $gray-7,
+  disabled-button-toggle: $gray-7,
+  unselected-chip: $gray-7,
+  disabled-list-option: $gray-7,
+);
+
+$github-dark-foreground: (
+  base: $gray-1,
+  divider: $gray-6,
+  dividers: $gray-6,
+  disabled: $gray-7,
+  disabled-button: $gray-7,
+  disabled-text: $white-fade-50,
+  hint-text: #d8dee999,
+  secondary-text: #616e88,
+  icon: $gray-1,
+  icons: $gray-1,
+  text: $gray-1,
+  slider-min: $gray-7,
+  slider-off: rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+@function create-custom-theme($primary, $accent, $warn) {
+  @return (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+    is-dark: true,
+    foreground: $github-dark-foreground,
+    background: $github-dark-background
+  );
+}
+
+$agora-gh-dark-primary: mat.define-palette($github-dark-primary, 500);
+$agora-gh-dark-accent: mat.define-palette($github-dark-accent);
+$agora-gh-dark-warn: mat.define-palette($github-dark-warn);
+
+$agora-gh-dark-theme: create-custom-theme($agora-gh-dark-primary, $agora-gh-dark-accent, $agora-gh-dark-warn);

@@ -7,9 +7,16 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { remoteRoutes } from './entry.routes';
 import { FormsModule } from '@angular/forms';
 
+import { MatButtonModule } from '@angular/material/button'
 @NgModule({
   declarations: [RemoteEntryComponent, NxWelcomeComponent],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(remoteRoutes)],
+  imports: [
+    CommonModule,
+     FormsModule,
+
+     MatButtonModule,
+
+      RouterModule.forChild(remoteRoutes)],
   providers: [],
 })
 export class RemoteEntryModule {}

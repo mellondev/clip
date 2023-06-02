@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '@clip/shared/user';
 @Component({
   selector: 'clip-login-entry',
@@ -13,7 +14,7 @@ import { UserService } from '@clip/shared/user';
           Password:
           <input type="password" name="password" [(ngModel)]="password" />
         </label>
-        <button type="submit">Login</button>
+        <button mat-flat-button color="primary" type="submit">Login</button>
       </form>
       <div *ngIf="isLoggedIn$ | async">User is logged in!</div>
     </div>
@@ -43,8 +44,9 @@ export class RemoteEntryComponent {
   username = '';
   password = '';
   isLoggedIn$ = this.userService.isUserLoggedIn$;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
   login() {
     this.userService.checkCredentials(this.username, this.password);
+    this.router.navigateByUrl('/dashboard');
   }
 }

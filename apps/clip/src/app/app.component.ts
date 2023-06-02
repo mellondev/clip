@@ -1,29 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '@clip/shared/user';
 import { Feature, FeatureService } from '@clip/shared/clip-core';
 import { setRemoteDefinitions } from '@nx/angular/mf';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable, map, shareReplay } from 'rxjs';
 
 @Component({
   selector: 'clip-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  private breakpointObserver = inject(BreakpointObserver);
+
   isLoggedIn$ = this.userService.isUserLoggedIn$;
-  features$ = this.featureService.getFeatures();
+  features$ = this.featureService.features;
 
   remoteDefinitions: Record<string, string> = {};
 
-  constructor(private userService: UserService, private featureService: FeatureService, private router: Router) {}
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(
+      map((result) => result.matches),
+      shareReplay()
+    );
 
-  simpleClick(feature: any) {
-    console.log(feature)
+  constructor(
+    private userService: UserService,
+    private featureService: FeatureService,
+    private router: Router
+  ) {
+    featureService.loadFeatures();
   }
 
   loadFeature(feature: Feature) {
     if (feature) {
-      this.remoteDefinitions[feature.name] = feature.remoteUrl
+      this.remoteDefinitions[feature.name] = feature.remoteUrl;
       console.log(this.remoteDefinitions);
     }
     setRemoteDefinitions(this.remoteDefinitions);

@@ -1,0 +1,38 @@
+<mat-sidenav-container class="layout-sidenav">
+  <mat-sidenav
+    class="sidenav"
+    [opened]="sideNavOpen"
+    [mode]="sideNavMode"
+    #sidenav
+  >
+    <clip-side-nav></clip-side-nav>
+  </mat-sidenav>
+
+  <div class="layout-content">
+    <mat-toolbar class="mat-elevation-z1 header-toolbar">
+      <div>
+        <button
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <input type="text" matInput placeholder="Search clip..." />
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+      <!-- <span class="example-spacer"></span> -->
+      <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+      <button mat-icon-button><mat-icon>format_color_fill</mat-icon></button>
+      <button mat-icon-button><mat-icon>settings</mat-icon></button>
+      <!-- <button style="margin: 2px" mat-flat-button color="primary" (click)="loadFeature(feature)" *ngFor="let feature of features$ | async">{{ feature.name }}</button> -->
+
+      <!-- <core-dark-mode *phRolesCanAccess="[]; showOnFeatures ['dark_mode']"></core-dark-mode> -->
+    </mat-toolbar>
+    <div class="layout-route">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</mat-sidenav-container>

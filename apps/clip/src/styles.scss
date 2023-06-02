@@ -1,40 +1,73 @@
 @use '@angular/material' as mat;
 
-$md-telxl: (
-  50 : #e0efff,
-  100 : #b3d7ff,
-  200 : #80bdff,
-  300 : #4da3ff,
-  400 : #268fff,
-  500 : #007bff,
-  600 : #0073ff,
-  700 : #0068ff,
-  800 : #005eff,
-  900 : #004bff,
-  A100 : #ffffff,
-  A200 : #f2f5ff,
-  A400 : #bfceff,
-  A700 : #a6baff,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #000000,
-      A700 : #000000,
-  )
+$md-telxl-primary: (
+    50 : #e5effb,
+    100 : #bed8f4,
+    200 : #92beed,
+    300 : #66a3e5,
+    400 : #4690e0,
+    500 : #257cda,
+    600 : #2174d6,
+    700 : #1b69d0,
+    800 : #165fcb,
+    900 : #0d4cc2,
+    A100 : #eff4ff,
+    A200 : #bcd0ff,
+    A400 : #89adff,
+    A700 : #6f9bff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
 );
 
-$my-primary: mat.define-palette($md-telxl, 500);
-$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$md-clip-primary: (
+    50 : #e5e6e9,
+    100 : #bdc1c7,
+    200 : #9198a2,
+    300 : #656e7c,
+    400 : #444f60,
+    500 : #233044,
+    600 : #1f2b3e,
+    700 : #1a2435,
+    800 : #151e2d,
+    900 : #0c131f,
+    A100 : #5f98ff,
+    A200 : #2c77ff,
+    A400 : #0059f8,
+    A700 : #0050df,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$my-primary: mat.define-palette($md-telxl-primary);
+$my-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
 
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
@@ -46,11 +79,21 @@ $my-theme: mat.define-light-theme((
    warn: $my-warn,
  ),
  typography: mat.define-typography-config(),
- density: 0,
+ density: -2,
 ));
 
 @include mat.all-component-themes($my-theme);
 
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+.flex-spacer {
+  flex: 1;
+}

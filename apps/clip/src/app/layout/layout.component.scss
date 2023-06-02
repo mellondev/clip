@@ -1,0 +1,99 @@
+@use '@angular/material' as mat;
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+mat-sidenav-container.layout-sidenav {
+  height: 100%;
+}
+
+mat-sidenav.sidenav {
+  min-width: 250px;
+  max-width: 250px;
+  background-color: rgb(35, 48, 68);
+  border-right: none;
+  z-index: 4;
+}
+
+mat-toolbar.header-toolbar {
+  background-color: white;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 0 42px;
+}
+
+.layout-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.layout-route {
+  flex: auto;
+}
+
+// @media screen and (min-width: 1280px) {
+//   .mat-sidenav-backdrop {
+//     z-index: 50 !important;
+//   }
+
+//   .sidenav + .cdk-visually-hidden + .mat-drawer-content,
+//   .sidenav + .mat-drawer-content {
+//     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+//     transition-property: transform, max-width, margin-left, margin-right !important;
+//     margin-left: 0 !important;
+//     background: #fafafa;
+//     z-index: 5;
+//     overflow: hidden;
+//     box-shadow: inset 7px 0 9px -7px rgba(0, 0, 0, 0);
+//   }
+
+//   .sidenav + .cdk-visually-hidden + .mat-drawer-content,
+//   .sidenav + .mat-drawer-content {
+//     max-width: calc(100% - 250px);
+//     transform: translate3d(250px, 0, 0) !important;
+//   }
+
+//   .sidenav.icon-sidenav.collapsed + .cdk-visually-hidden + .mat-drawer-content,
+//   .sidenav.icon-sidenav.collapsed + .mat-drawer-content {
+//     max-width: calc(100% - 66px);
+//     transform: translate3d(66px, 0, 0) !important;
+//   }
+
+//   .sidenav.icon-sidenav + .cdk-visually-hidden + .mat-drawer-content,
+//   .sidenav.icon-sidenav + .mat-drawer-content {
+//     max-width: calc(100% - 66px);
+//   }
+
+//   .sidenav {
+//     &.collapsed {
+//       .fade-in-on-icon-sidenav {
+//         animation: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1
+//           fadeout;
+//       }
+//     }
+
+//     &:not(.collapsed) {
+//       .fade-in-on-icon-sidenav {
+//         animation: 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1
+//           fadein;
+//       }
+//     }
+//   }
+// }

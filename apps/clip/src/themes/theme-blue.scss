@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+$agora-blue-primary: mat.define-palette(mat.$blue-palette, 600, 300, 900);
+$agora-blue-accent: mat.define-palette(mat.$blue-grey-palette, 400);
+$agora-blue-warn: mat.define-palette(mat.$red-palette, 500);
+
+$agora-blue-theme: mat.define-light-theme(
+  $agora-blue-primary,
+  $agora-blue-accent,
+  $agora-blue-warn
+)
