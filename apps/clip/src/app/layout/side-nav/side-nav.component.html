@@ -73,10 +73,7 @@
 
   <!-- additional features -->
   <ng-container *ngFor="let feature of features$ | async">
-    <a
-      mat-list-item
-      (click)="loadFeature(feature.name)"
-    >
+    <a mat-list-item (click)="loadFeature(feature.name, true)">
       <div class="center-flex">
         <mat-icon>business</mat-icon>
         <span>{{ feature.title }}</span>

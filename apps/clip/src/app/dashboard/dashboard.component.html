@@ -1,61 +1,92 @@
-<div class="grid-container">
-  <button
-    mat-fab
-    color="primary"
-    (click)="toggleDesignMode()"
-    style="position: absolute; bottom: 0; right: 0; margin: 14px; z-index: 100"
+<mat-drawer-container style="height: 100%" hasBackdrop="false">
+  <mat-drawer
+    #drawer
+    mode="side"
+    position="end"
+    style="width: 320px; padding: 16px"
   >
-    <mat-icon *ngIf="!designMode">grid_view</mat-icon>
-    <mat-icon *ngIf="designMode">check</mat-icon>
-  </button>
-  <mat-toolbar color="accent" class="design-toolbar" *ngIf="designMode">
-    <span>Design Mode</span>
-    <span class="flex-spacer"></span>
-    <button mat-icon-button (click)="addItem()">
-      <mat-icon>add_circle</mat-icon>
-    </button>
-  </mat-toolbar>
-  <gridster [options]="options" class="dashboard-grid">
-    <gridster-item
-      class="dashboard-item"
-      [item]="item"
-      *ngFor="let item of dashboard"
+    <clip-feature-browser (widgetAdded)="addWidget($event)"></clip-feature-browser>
+  </mat-drawer>
+  <div class="grid-container">
+    <button
+      mat-fab
+      color="primary"
+      (click)="toggleDesignMode()"
+      style="
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 14px;
+        z-index: 100;
+      "
+      *ngIf="!designMode"
     >
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title> Dashboard Item </mat-card-title>
-          <span class="flex-spacer"></span>
+      <mat-icon>grid_view</mat-icon>
+    </button>
+    <mat-toolbar color="primary" class="design-toolbar" *ngIf="designMode">
+      <span>Design Mode</span>
+      <span class="flex-spacer"></span>
+      <button mat-flat-button (click)="toggleDesignMode()">Done Editing</button>
+      <span class="flex-spacer"></span>
+      <!-- <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>add_circle</mat-icon>
+      </button> -->
+      <button mat-flat-button (click)="drawer.toggle()">
+        Add Item
+      </button>
+    </mat-toolbar>
+    <gridster [options]="options" class="dashboard-grid">
+      <gridster-item
+        class="dashboard-item"
+        [item]="item"
+        *ngFor="let item of dashboard"
+      >
 
-          <button mat-icon-button color="accent" class="more-button">
-            <mat-icon>settings</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            *ngIf="designMode"
-            color="accent"
-            class="more-button"
-            (click)="removeItem(item)"
-          >
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-card-header>
+      <mat-card class="dashboard-card">
         <mat-card-content class="dashboard-card-content-container">
-          <div class="dashboard-card-content">
-            <span>Dashboard Item Content</span>
-            <div class="clip-progress-bar">
-              <div class="clip-progress-bar-fill" style="width: 28%"></div>
-            </div>
-            <span>Dashboard Item Content</span>
-            <div class="clip-progress-bar">
-              <div class="clip-progress-bar-fill" style="width: 28%"></div>
-            </div>
-            <span>Dashboard Item Content</span>
-            <div class="clip-progress-bar">
-              <div class="clip-progress-bar-fill" style="width: 28%; background-color: blueviolet;"></div>
-            </div>
-          </div>
+          <clip-widget-proxy [featureWidget]="item['featureWidget']"></clip-widget-proxy>
         </mat-card-content>
       </mat-card>
-    </gridster-item>
-  </gridster>
-</div>
+
+        <!-- <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title> Dashboard Item </mat-card-title>
+            <span class="flex-spacer"></span>
+
+            <button mat-icon-button color="accent" class="more-button">
+              <mat-icon>settings</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              *ngIf="designMode"
+              color="accent"
+              class="more-button"
+              (click)="removeItem(item)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content-container">
+            <div class="dashboard-card-content">
+              <span>Dashboard Item Content</span>
+              <div class="clip-progress-bar">
+                <div class="clip-progress-bar-fill" style="width: 28%"></div>
+              </div>
+              <span>Dashboard Item Content</span>
+              <div class="clip-progress-bar">
+                <div class="clip-progress-bar-fill" style="width: 28%"></div>
+              </div>
+              <span>Dashboard Item Content</span>
+              <div class="clip-progress-bar">
+                <div
+                  class="clip-progress-bar-fill"
+                  style="width: 28%; background-color: blueviolet"
+                ></div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card> -->
+      </gridster-item>
+    </gridster>
+  </div>
+</mat-drawer-container>

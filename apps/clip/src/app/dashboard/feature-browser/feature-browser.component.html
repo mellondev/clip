@@ -1,0 +1,13 @@
+<h2>Add widget</h2>
+<mat-list>
+  <ng-container *ngFor="let feature of features$ | async">
+    <div mat-subheader>{{ feature.title }}</div>
+    <mat-list-item *ngFor="let widget of feature.dashboardWidgets">
+      <div matListItemIcon (click)="addWidget({feature, widget})">
+        <mat-icon>add</mat-icon>
+      </div>
+      <div matListItemTitle>{{ widget.title }}</div>
+      <div matListItemLine>{{ widget.description }}</div>
+    </mat-list-item>
+  </ng-container>
+</mat-list>

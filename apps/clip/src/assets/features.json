@@ -9,6 +9,22 @@
     "name": "clip-feature-browser",
     "title": "Features",
     "description": "Manage all your clip features, you can enable & disable features as well as configure your new features",
-    "remoteUrl": "http://localhost:4202"
+    "remoteUrl": "http://localhost:4202",
+    "dashboardWidgets": [
+      {
+        "name": "feature-metrics",
+        "title": "Feature Metrics",
+        "description": "See all your feature metrics",
+        "module": "Widget",
+        "componentName": "FeatureMetricWidgetComponent"
+      },
+      {
+        "name": "feature-news",
+        "title": "Feature New",
+        "description": "All the latest feature news",
+        "module": "NewsWidget",
+        "componentName": "FeatureNewsWidgetComponent"
+      }
+    ]
   }
 ]

@@ -30,9 +30,7 @@ export class AppComponent {
     private userService: UserService,
     private featureService: FeatureService,
     private router: Router
-  ) {
-    featureService.loadFeatures();
-  }
+  ) {}
 
   loadFeature(feature: Feature) {
     if (feature) {
@@ -42,6 +40,7 @@ export class AppComponent {
     setRemoteDefinitions(this.remoteDefinitions);
     this.router.navigateByUrl('login');
   }
+
   // ngOnInit() {
   //   this.isLoggedIn$
   //     .pipe(distinctUntilChanged())

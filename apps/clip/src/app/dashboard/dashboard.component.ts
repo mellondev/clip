@@ -13,6 +13,7 @@ import {
   GridsterItem,
   GridType,
 } from 'angular-gridster2';
+import { DashboardFeatureWidget } from './dashboard-feature-widget';
 
 @Component({
   selector: 'clip-dashboard',
@@ -30,18 +31,22 @@ export class DashboardComponent implements OnInit {
 
   designMode = false;
 
-  static itemChange(item: unknown, itemComponent: unknown) {
-    console.info('itemChanged', item, itemComponent);
-  }
+  // feature: Feature = {
+  //   name: 'clip-feature-browser',
+  //   title: 'Features',
+  //   description: 'Manage all your clip features, you can enable & disable features as well as configure your new features',
+  //   remoteUrl: 'http://localhost:4202'
+  // };
 
-  static itemResize(item: unknown, itemComponent: unknown) {
-    console.info('itemResized', item, itemComponent);
-  }
+  dynamicDashboardItem: GridsterItem = {
+    x: 0,
+    y: 3,
+    rows: 4,
+    cols: 4,
+  };
 
   ngOnInit() {
     this.options = {
-      itemChangeCallback: DashboardComponent.itemChange,
-      itemResizeCallback: DashboardComponent.itemResize,
       draggable: {
         enabled: false,
       },
@@ -51,12 +56,11 @@ export class DashboardComponent implements OnInit {
       gridType: GridType.Fixed,
       displayGrid: DisplayGrid.None,
       compactType: CompactType.None,
+      fixedColWidth: 100,
+      fixedRowHeight: 100,
     };
 
-    this.dashboard = [
-      { cols: 2, rows: 1, y: 0, x: 0 },
-      { cols: 2, rows: 1, y: 0, x: 2 },
-    ];
+    this.dashboard = [];
   }
 
   changedOptions() {
@@ -75,7 +79,7 @@ export class DashboardComponent implements OnInit {
         ...{ draggable: { enabled: this.designMode } },
         ...{ resizable: { enabled: this.designMode } },
       };
-      console.log(this.options);
+      this.changedOptions();
     }
   }
 
@@ -89,6 +93,16 @@ export class DashboardComponent implements OnInit {
       y: 0,
       rows: 1,
       cols: 1,
+    });
+  }
+
+  addWidget(featureWidget: DashboardFeatureWidget) {
+    this.dashboard.push({
+      x: 0,
+      y: 0,
+      rows: 4,
+      cols: 4,
+      featureWidget,
     });
   }
 }

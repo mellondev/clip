@@ -13,15 +13,16 @@ export class SideNavComponent {
 
   features$ = this.featureService.features;
 
-  constructor(private featureService: FeatureService, private router: Router) {    
-  }
+  constructor(private featureService: FeatureService, private router: Router) {}
 
   expandNavItem(sideNavItem: SideNavRoute) {
     sideNavItem.isExpanded = !sideNavItem.isExpanded;
   }
 
-  loadFeature(featureName: string) {
+  loadFeature(featureName: string, navigate = false) {
     this.featureService.loadFeature(featureName);
-    this.router.navigateByUrl(featureName);
+    if (navigate) {
+      this.router.navigateByUrl(featureName);
+    }
   }
 }

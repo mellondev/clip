@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -19,7 +19,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LayoutComponent } from './layout/layout.component';
 import { SideNavComponent } from './layout/side-nav/side-nav.component';
-import { GridsterModule } from 'angular-gridster2'
+import { GridsterModule } from 'angular-gridster2';
+import { WidgetProxyComponent } from './dashboard/widget-proxy/widget-proxy.component';
+import { Feature, FeatureService } from '@clip/shared/clip-core';
+import { Observable } from 'rxjs';
+import { FeatureBrowserComponent } from './dashboard/feature-browser/feature-browser.component';
+
+function initializeAppFactory(
+  featureService: FeatureService
+): () => Observable<Feature[]> {
+  return () => featureService.features;
+}
 
 @NgModule({
   declarations: [
@@ -27,6 +37,8 @@ import { GridsterModule } from 'angular-gridster2'
     DashboardComponent,
     LayoutComponent,
     SideNavComponent,
+    WidgetProxyComponent,
+    FeatureBrowserComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +58,16 @@ import { GridsterModule } from 'angular-gridster2'
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
-    GridsterModule
+    GridsterModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeAppFactory,
+      deps: [FeatureService],
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

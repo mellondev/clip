@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Feature } from './feature';
-import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { setRemoteDefinitions } from '@nx/angular/mf';
 
 @Injectable({
@@ -10,27 +10,29 @@ import { setRemoteDefinitions } from '@nx/angular/mf';
 export class FeatureService {
   featuresUrl = 'assets/features.json';
 
-  private readonly features$: BehaviorSubject<Feature[]> = new BehaviorSubject<
-    Feature[]
-  >([]);
+  private features$: Feature[] = [];
 
   get features(): Observable<Feature[]> {
-    return this.features$.asObservable();
+    if (this.features$.length === 0) {
+      return this.loadFeatures().pipe(map(result => this.features$ = result));
+    }
+
+    return of(this.features$);
   }
 
   remoteDefinitions: Record<string, string> = {};
 
   constructor(private http: HttpClient) {}
 
-  loadFeatures() {
-    this.http
+  private loadFeatures(): Observable<Feature[]> {
+    console.log('loadFeatures');
+    return this.http
       .get<Feature[]>(this.featuresUrl)
-      .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])))
-      .subscribe((features) => this.features$.next(features));
+      .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])));
   }
 
   loadFeature(featureName: string) {
-    const featureToLoad = this.features$.getValue().find(x => x.name === featureName);
+    const featureToLoad = this.features$.find(x => x.name === featureName);
 
     if (featureToLoad) {
       this.remoteDefinitions[featureToLoad.name] = featureToLoad.remoteUrl;

@@ -1,22 +1,5 @@
 @use '@angular/material' as mat;
 
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
 mat-sidenav-container.layout-sidenav {
   height: 100%;
 }
@@ -31,6 +14,7 @@ mat-sidenav.sidenav {
 
 mat-toolbar.header-toolbar {
   background-color: white;
+  z-index: 100;
 }
 
 mat-form-field {
