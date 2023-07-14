@@ -44,46 +44,4 @@
       </mat-list-item>
     </mat-nav-list>
   </ng-container>
-
-  <!-- additional features -->
-  <ng-container *ngFor="let feature of features$ | async">
-    <a mat-list-item (click)="loadFeature(feature.name, true)">
-      <div class="center-flex">
-        <mat-icon>business</mat-icon>
-        <span>{{ feature.title }}</span>
-      </div>
-    </a>
-  </ng-container>
 </mat-nav-list>
-
-<!-- <div class="sidenav-footer-content" [ngClass]="{ open: footerOpen }" (mouseleave)="footerOpen = false">
-  <a class="close-btn" (click)="toggleFooter()">
-    <mat-icon>close</mat-icon>
-  </a>
-
-  <div fxLayout="row" fxLayoutGap="12px" class="sidenav-footer-content-header">
-    <mat-icon>account_circle</mat-icon>
-
-    <div fxFlex="80%" fxLayout="column">
-      {{ displayName }}
-      <div *ngIf="user && user.companyId" class="sidenav-footer-content-subheader">
-        Pair Code: <span>{{ company?.pairCode }}</span>
-      </div>
-    </div>
-  </div>
-
-  <ul>
-    <li>
-      <a id='logout' (click)="logout()">
-        Log out
-      </a>
-    </li>
-  </ul>
-</div>
-
-<div class="sidenav-footer" fxLayout="row" fxLayoutAlign="start center" (click)="toggleFooter()">
-  <span fxFlex>
-    {{ displayName }}
-  </span>
-  <mat-icon id='logout-icon'>settings_applications</mat-icon>
-</div> -->

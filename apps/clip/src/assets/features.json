@@ -8,7 +8,6 @@
       "id": "clipUsersRoute",
       "text": "Users",
       "icon": "dashboard",
-      "route": "/users",
       "module": "./UsersModule",
       "subRoutes": [
         {
@@ -25,7 +24,7 @@
     }
   },
   {
-    "name": "clip-feature-browser",
+    "name": "feature-browser",
     "title": "Features",
     "description": "Manage all your clip features, you can enable & disable features as well as configure your new features",
     "remoteUrl": "http://localhost:4202",
@@ -33,7 +32,7 @@
       "id": "clipFeaturesRoute",
       "text": "Features",
       "icon": "dashboard",
-      "route": "/features"
+      "route": "/feature-browser"
     },
     "dashboardWidgets": [
       {
@@ -53,15 +52,26 @@
     ]
   },
   {
-    "name": "clip-agents",
+    "name": "agents",
     "title": "Agents",
     "description": "Manage your Agents details and provide dashboard metrics based on your agents",
     "remoteUrl": "http://localhost:4203",
     "route": {
       "id": "clipAgentsRoute",
-      "text": "Agents",
+      "text": "Agent Management",
       "icon": "dashboard",
-      "route": "/agents"
+      "subRoutes": [
+        {
+          "id": "listAgentsLink",
+          "text": "Agents",
+          "route": "/agents"
+        },
+        {
+          "id": "editAgentLink",
+          "text": "Edit Agent",
+          "route": "/agents/edit"
+        }
+      ]
     },
     "dashboardWidgets": [
       {

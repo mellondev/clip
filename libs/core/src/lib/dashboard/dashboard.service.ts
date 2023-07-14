@@ -5,8 +5,6 @@ import { DashboardItem } from './dashboard-item.model';
   providedIn: 'root',
 })
 export class DashboardService {
-  dashboardUrl = 'assets/dashboard-config.json';
-
   loadDashboard(): DashboardItem[] {
     const savedDashboard = localStorage.getItem('dashboardConfig');
     console.log('loadedDashboard', savedDashboard);
