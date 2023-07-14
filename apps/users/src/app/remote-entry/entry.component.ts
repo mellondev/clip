@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '@clip/shared/user';
+import { UserService } from '@clip/core';
 @Component({
   selector: 'clip-login-entry',
   template: `

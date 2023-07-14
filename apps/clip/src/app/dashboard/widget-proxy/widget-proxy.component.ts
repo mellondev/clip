@@ -6,7 +6,7 @@ import {
   ViewContainerRef,
   inject,
 } from '@angular/core';
-import { FeatureService } from '@clip/shared/clip-core';
+import { FeatureService } from '@clip/core';
 import { loadRemoteModule } from '@nx/angular/mf';
 import { DashboardFeatureWidget } from '../dashboard-feature-widget';
 
@@ -23,7 +23,7 @@ export class WidgetProxyComponent implements OnChanges {
   @Input() featureWidget!: DashboardFeatureWidget
 
   async ngOnChanges() {
-    this.featureService.loadFeature(this.featureWidget.feature.name);
+    // this.featureService.loadFeature(this.featureWidget.feature.name);
     this.viewContainer.clear();
 
     const component = await loadRemoteModule(

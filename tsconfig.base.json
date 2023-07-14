@@ -15,8 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@clip/shared/clip-core": ["libs/shared/clip-core/src/index.ts"],
-      "@clip/shared/user": ["libs/shared/user/src/index.ts"]
+      "@clip/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

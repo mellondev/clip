@@ -6,16 +6,23 @@ import { RemoteEntryComponent } from './entry.component';
 import { remoteRoutes } from './entry.routes';
 import { FormsModule } from '@angular/forms';
 
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
+
+import { UserListComponent } from '../user-list/user-list.component';
 @NgModule({
-  declarations: [RemoteEntryComponent],
+  declarations: [RemoteEntryComponent, UserListComponent],
   imports: [
     CommonModule,
-     FormsModule,
+    FormsModule,
 
-     MatButtonModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatTableModule,
 
-      RouterModule.forChild(remoteRoutes)],
+    RouterModule.forChild(remoteRoutes),
+  ],
   providers: [],
 })
 export class RemoteEntryModule {}

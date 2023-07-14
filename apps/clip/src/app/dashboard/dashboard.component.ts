@@ -1,11 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   OnInit,
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { UserService } from '@clip/shared/user';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   CompactType,
   DisplayGrid,
@@ -14,38 +15,35 @@ import {
   GridType,
 } from 'angular-gridster2';
 import { DashboardFeatureWidget } from './dashboard-feature-widget';
+import {
+  DashboardItem,
+  DashboardService,
+  FeatureService,
+  UserService,
+} from '@clip/core';
 
 @Component({
   selector: 'clip-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DashboardService],
+  changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
 export class DashboardComponent implements OnInit {
   private userService = inject(UserService);
-  user$ = this.userService.user$;
+  private featureService = inject(FeatureService);
+  private dashboardService = inject(DashboardService);
 
-  options!: GridsterConfig;
-  dashboard!: Array<GridsterItem>;
+  destroyRef = inject(DestroyRef)
+  user$ = this.userService.user$;
+  options: GridsterConfig;
+  dashboard: GridsterItem[] = [];
 
   designMode = false;
+  isLoading = true;
 
-  // feature: Feature = {
-  //   name: 'clip-feature-browser',
-  //   title: 'Features',
-  //   description: 'Manage all your clip features, you can enable & disable features as well as configure your new features',
-  //   remoteUrl: 'http://localhost:4202'
-  // };
-
-  dynamicDashboardItem: GridsterItem = {
-    x: 0,
-    y: 3,
-    rows: 4,
-    cols: 4,
-  };
-
-  ngOnInit() {
+  constructor() {
     this.options = {
       draggable: {
         enabled: false,
@@ -59,8 +57,29 @@ export class DashboardComponent implements OnInit {
       fixedColWidth: 100,
       fixedRowHeight: 100,
     };
+  }
 
+  ngOnInit() {
     this.dashboard = [];
+
+    this.featureService.features
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((resp) => {
+        this.dashboard = this.dashboardService.loadDashboard().map((item) => {
+          const feature = resp.find((f) => f.name === item.featureName);
+          const widget = feature?.dashboardWidgets?.find(
+            (w) => w.name === item.widgetName
+          );
+          return {
+            x: item.x,
+            y: item.y,
+            rows: item.rows,
+            cols: item.cols,
+            featureWidget: { feature, widget },
+          };
+        });
+        this.isLoading = false;
+      });
   }
 
   changedOptions() {
@@ -69,11 +88,26 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  toggleDesignMode() {
+  onToggleDesignMode() {
+    if (this.designMode) {
+      const dashboardConfig: DashboardItem[] = this.dashboard.map(
+        (item: any) => {
+          return {
+            x: item.x,
+            y: item.y,
+            rows: item.rows,
+            cols: item.cols,
+            featureName: item.featureWidget?.feature?.name,
+            widgetName: item.featureWidget?.widget?.name,
+          };
+        }
+      );
+      localStorage.setItem('dashboardConfig', JSON.stringify(dashboardConfig));
+      console.log('dashboardConfig', dashboardConfig);
+    }
+
     if (this.options?.api) {
       this.designMode = !this.designMode;
-
-      console.log(this.options);
       this.options = {
         ...this.options,
         ...{ draggable: { enabled: this.designMode } },
@@ -85,6 +119,7 @@ export class DashboardComponent implements OnInit {
 
   removeItem(item: any) {
     this.dashboard.splice(this.dashboard.indexOf(item), 1);
+    this.changedOptions();
   }
 
   addItem() {
@@ -94,6 +129,7 @@ export class DashboardComponent implements OnInit {
       rows: 1,
       cols: 1,
     });
+    console.log(this.dashboard);
   }
 
   addWidget(featureWidget: DashboardFeatureWidget) {
@@ -104,5 +140,7 @@ export class DashboardComponent implements OnInit {
       cols: 4,
       featureWidget,
     });
+
+    console.log(this.dashboard);
   }
 }

@@ -1,4 +1,4 @@
-import { DashboardWidget, Feature } from "@clip/shared/clip-core";
+import { DashboardWidget, Feature } from "@clip/core";
 
 export interface DashboardFeatureWidget {
   feature: Feature;

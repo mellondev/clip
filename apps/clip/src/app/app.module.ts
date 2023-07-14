@@ -1,8 +1,8 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { appRoutes } from './app.routes';
+import { APP_ROUTES } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,15 +21,10 @@ import { LayoutComponent } from './layout/layout.component';
 import { SideNavComponent } from './layout/side-nav/side-nav.component';
 import { GridsterModule } from 'angular-gridster2';
 import { WidgetProxyComponent } from './dashboard/widget-proxy/widget-proxy.component';
-import { Feature, FeatureService } from '@clip/shared/clip-core';
-import { Observable } from 'rxjs';
 import { FeatureBrowserComponent } from './dashboard/feature-browser/feature-browser.component';
-
-function initializeAppFactory(
-  featureService: FeatureService
-): () => Observable<Feature[]> {
-  return () => featureService.features;
-}
+import { FeatureService } from '@clip/core';
+import { tap } from 'rxjs';
+import { loadRemoteModule } from '@nx/angular/mf';
 
 @NgModule({
   declarations: [
@@ -44,7 +39,7 @@ function initializeAppFactory(
     BrowserModule,
     HttpClientModule,
 
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(APP_ROUTES),
 
     BrowserAnimationsModule,
     MatGridListModule,
@@ -63,11 +58,32 @@ function initializeAppFactory(
   providers: [
     {
       provide: APP_INITIALIZER,
-      useFactory: initializeAppFactory,
-      deps: [FeatureService],
+      useFactory: initializeApplication,
       multi: true,
-    },
+      deps: [Router, FeatureService],
+    }
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function initializeApplication(router: Router, featureService: FeatureService)  {
+  return () => featureService.features.pipe(
+    tap((features) => {
+      const featureRoutes: Routes = features
+      .filter((f) => f.route)
+      .map((f) => ({
+        path: f.name,
+        loadChildren: () =>
+          loadRemoteModule(f.name, f.route?.module ?? './Module').then(
+            (m) => m.RemoteEntryModule
+          ),
+      }))
+
+      console.log(APP_ROUTES);
+      APP_ROUTES[0].children?.push(...featureRoutes);
+      console.log(APP_ROUTES);
+      router.resetConfig(APP_ROUTES);
+    })
+  )
+}

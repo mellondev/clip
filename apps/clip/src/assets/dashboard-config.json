@@ -1,0 +1,34 @@
+[
+  {
+    "x": 0,
+    "y": 0,
+    "rows": 4,
+    "cols": 4,
+    "featureName": "clip-agents",
+    "widgetName": "agent-status"
+  },
+  {
+    "x": 8,
+    "y": 0,
+    "rows": 4,
+    "cols": 4,
+    "featureName": "clip-feature-browser",
+    "widgetName": "feature-metrics"
+  },
+  {
+    "x": 4,
+    "y": 0,
+    "rows": 4,
+    "cols": 4,
+    "featureName": "clip-feature-browser",
+    "widgetName": "feature-news"
+  },
+  {
+    "x": 0,
+    "y": 4,
+    "rows": 4,
+    "cols": 8,
+    "featureName": "clip-agents",
+    "widgetName": "agent-list"
+  }
+]

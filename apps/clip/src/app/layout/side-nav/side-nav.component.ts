@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SideNavRoute, appNavRoutes } from '../../side-nav-routes';
-import { FeatureService } from '@clip/shared/clip-core';
+import { ApplicationRoute, appNavRoutes } from '../../side-nav-routes';
+import { FeatureService } from '@clip/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,12 +15,12 @@ export class SideNavComponent {
 
   constructor(private featureService: FeatureService, private router: Router) {}
 
-  expandNavItem(sideNavItem: SideNavRoute) {
+  expandNavItem(sideNavItem: ApplicationRoute) {
     sideNavItem.isExpanded = !sideNavItem.isExpanded;
   }
 
   loadFeature(featureName: string, navigate = false) {
-    this.featureService.loadFeature(featureName);
+    // this.featureService.loadFeature(featureName);
     if (navigate) {
       this.router.navigateByUrl(featureName);
     }

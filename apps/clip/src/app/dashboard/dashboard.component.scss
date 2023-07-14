@@ -17,6 +17,14 @@
   padding: 2px;
 }
 
+.dashboard-card .settings-button {
+  visibility: hidden;
+}
+
+.dashboard-card:hover .settings-button {
+  visibility: visible;
+}
+
 gridster-item.gridster-item-resizing,
 gridster-item.gridster-item-moving {
   padding: 0;
