@@ -72,17 +72,46 @@ $my-accent: mat.define-palette(mat.$blue-grey-palette, A200, A100, A400);
 // The "warn" palette is optional and defaults to red if not specified.
 $my-warn: mat.define-palette(mat.$red-palette);
 
+$my-typography: mat.define-typography-config(
+  $font-family: 'inter'
+);
+
 $my-theme: mat.define-light-theme((
  color: (
    primary: $my-primary,
    accent: $my-accent,
    warn: $my-warn,
  ),
- typography: mat.define-typography-config(),
+ typography: $my-typography,
  density: -2,
 ));
 
+@function my-mat-light-theme-foreground($color) {
+  @return (
+      base:              $color,
+      divider:           rgba($color, 0.12),
+      dividers:          rgba($color, 0.12),
+      disabled:          rgba($color, 0.38),
+      disabled-button:   rgba($color, 0.38),
+      disabled-text:     rgba($color, 0.38),
+      hint-text:         rgba($color, 0.38),
+      secondary-text:    rgba($color, 0.54),
+      icon:              rgba($color, 0.54),
+      icons:             rgba($color, 0.54),
+      text:              rgba($color, 0.87),
+      slider-off:        rgba($color, 0.26),
+      slider-off-active: rgba($color, 0.38),
+      slider-min:        rgba($color, 0.38)
+  );
+};
+
+$clip-foreground: my-mat-light-theme-foreground(#152536);
+
+$my-theme: map-merge($my-theme, (foreground: $clip-foreground));
+
 @include mat.all-component-themes($my-theme);
+
+@include mat.typography-hierarchy($my-typography);
 
 html,
 body {
@@ -90,7 +119,6 @@ body {
 }
 
 body {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
   margin: 0;
 }
 

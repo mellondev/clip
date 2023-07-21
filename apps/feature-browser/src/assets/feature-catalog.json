@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cxp-agents",
+    "name": "Agent Management",
+    "description": "Manage your Agents details and provide dashboard metrics based on your agents",
+    "image": "http://localhost:4023/assets/chart-news.png",
+    "tags": ["agent", "management", "dashboard", "metrics"],
+    "documentation": "http://localhost:4023/docs/cxp-agents",
+    "publishedDate": "2023-07-20T00:00:00.000Z",
+    "changelog": "First release",
+    "featured": true,
+    "version":"1.0.1",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-20T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-20T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-agents-status",
+        "name": "Agent Status",
+        "description": "Chart showing your agents status",
+        "type": "Dashboard Widget"
+      },
+      {
+        "id": "cxp-agents-list",
+        "name": "Agent List",
+        "description": "Table showing your agents",
+        "type": "Dashboard Widget"
+      }
+    ]
+  },
+  {
+    "id": "cxp-users",
+    "name": "User Management",
+    "description": "Manage the users, roles and permissions of your CXP instance",
+    "image": "http://localhost:4022/assets/user.png",
+    "tags": ["user", "management", "dashboard", "metrics"],
+    "documentation": "http://localhost:4022/docs/cxp-users",
+    "publishedDate": "2023-07-10T00:00:00.000Z",
+    "changelog": "Bug fixes",
+    "featured": true,
+    "version":"1.0.1",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-10T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-users-module",
+        "name": "User Management",
+        "description": "Management pages for users, roles and permissions",
+        "type": "Management Page"
+      }
+    ]
+  },
+  {
+    "id": "cxp-customer",
+    "name": "Customer Management",
+    "description": "Manage all your custmers and their details, with built in dashboard widgets to keep track of your customers",
+    "image": "http://localhost:4022/assets/user.png",
+    "tags": ["management", "dashboard", "metrics"],
+    "documentation": "http://localhost:4022/docs/cxp-users",
+    "publishedDate": "2023-07-10T00:00:00.000Z",
+    "changelog": "Bug fixes",
+    "featured": false,
+    "version":"1.0.1",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-10T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-users-module",
+        "name": "User Management",
+        "description": "Management pages for users, roles and permissions",
+        "type": "Management Page"
+      }
+    ]
+  },
+  {
+    "id": "cxp-resellers",
+    "name": "Reseller Management",
+    "description": "Manage all your resellers and their details, with built in dashboard widgets to keep track of your resellers",
+    "image": "http://localhost:4022/assets/user.png",
+    "tags": ["management", "dashboard", "metrics"],
+    "documentation": "http://localhost:4022/docs/cxp-users",
+    "publishedDate": "2023-07-10T00:00:00.000Z",
+    "changelog": "Bug fixes",
+    "featured": false,
+    "version":"1.0.1",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-10T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-users-module",
+        "name": "User Management",
+        "description": "Management pages for users, roles and permissions",
+        "type": "Management Page"
+      }
+    ]
+  },
+  {
+    "id": "cxp-blacklisting",
+    "name": "Blacklisting",
+    "description": "Enable the ability to blacklist numbers and manage your blacklist",
+    "image": "http://localhost:4022/assets/user.png",
+    "tags": ["channel"],
+    "documentation": "http://localhost:4022/docs/cxp-users",
+    "publishedDate": "2023-07-10T00:00:00.000Z",
+    "changelog": "Bug fixes",
+    "featured": false,
+    "version":"1.0.3",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-10T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      },
+      {
+        "version": "1.0.2",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      },
+      {
+        "version": "1.0.3",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-users-module",
+        "name": "User Management",
+        "description": "Management pages for users, roles and permissions",
+        "type": "Management Page"
+      }
+    ]
+  }
+]

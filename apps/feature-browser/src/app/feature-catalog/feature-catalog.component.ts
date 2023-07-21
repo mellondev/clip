@@ -1,0 +1,23 @@
+import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { Observable, map } from 'rxjs';
+
+import { CatalogService } from './catalog-service';
+import { Feature } from './feature.model';
+
+@Component({
+  selector: 'clip-feature-catalog',
+  templateUrl: './feature-catalog.component.html',
+  styleUrls: ['./feature-catalog.component.scss'],
+})
+export class FeatureCatalogComponent {
+  private catalogService = inject(CatalogService);
+  allFeatures$: Observable<Feature[]>;
+  featured$: Observable<Feature[]>;
+
+  constructor() {
+    this.allFeatures$ = this.catalogService.features.pipe(takeUntilDestroyed());
+    this.featured$ = this.catalogService.features.pipe(takeUntilDestroyed(), map((features) => features.filter((f) => f.featured)));
+  }
+}

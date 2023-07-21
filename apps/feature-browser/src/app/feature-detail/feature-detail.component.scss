@@ -1,0 +1,51 @@
+.feature-heading-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.feature-heading {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+  align-items: center;
+  background-color: white;
+}
+
+.heading-title {
+ display: flex;
+ flex-direction: column;
+ margin-left: 24px;
+}
+
+.feature-name {
+  margin-bottom: 6px;
+}
+
+.feature-new {
+  margin-left: auto;
+  background-color: #7ab55c;
+  border-radius: 24px;
+  width: 48px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+}
+
+.feature-icon {
+  color: #D3D6E0;
+  margin: 24px 0px;
+}
+
+.material-icons.feature-icon {
+  color: #6B6C7E;
+  font-size: 64px;
+  line-height: 1.25;
+  width: 84px;
+  background-color: #F7F8F9;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}

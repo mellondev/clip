@@ -1,0 +1,22 @@
+.container {
+  padding: 24px;
+}
+
+.featured-banner {
+  display: flex;
+  justify-content: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.featured-detail {
+  flex: 1;
+  height: 200px;
+}
+
+.feature-list {
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+margin-top: 12px;
+}

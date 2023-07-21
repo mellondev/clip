@@ -1,0 +1,44 @@
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  border: #e5e6ea 1px solid;
+  border-radius: 4px;
+  background-color: white;
+  width: 320px;
+  height: 180px;
+  cursor: pointer;
+}
+
+.feature-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.feature-item:hover {
+  border: #80ACFF 1px solid;
+  border-radius: 4px;
+}
+
+.feature-name {
+  margin-left: 16px;
+  margin-bottom: 0px;
+}
+
+.feature-icon {
+  color: #D3D6E0;
+}
+
+.material-icons.feature-icon {
+  color: white;
+  font-size: 36px;
+  line-height: 1.25;
+  width: 48px;
+  background-color: #446f9b;
+  border-radius: 8px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="featured">
+    <div class="featured-heading">
+      <h1 style="font-weight: 500;">Feature Catalog</h1>
+    </div>
+    <div class="featured-banner">
+      <clip-featured-item
+        [feature]="feature"
+        *ngFor="let feature of featured$ | async"
+      />
+    </div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Management"> 
+        <div class="feature-list">
+          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
+      </div>
+      </mat-tab>
+      <mat-tab label="Channels"> 
+        <div class="feature-list">
+          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
+      </div> </mat-tab>
+      <mat-tab label="Integrations">
+        <div class="feature-list">
+          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
+      </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

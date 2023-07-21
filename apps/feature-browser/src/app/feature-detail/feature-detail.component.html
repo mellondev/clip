@@ -1,0 +1,23 @@
+<div class="feature-container" *ngIf="feature$ | async as feature">
+  <div class="feature-heading-container">
+    <div class="feature-heading">
+      <div class="material-icons feature-icon">person</div>
+      <div class="heading-title">
+        <div class="feature-name mat-headline-5">{{ feature.name }}</div>
+        <div class="feature-version">{{ feature.version }}</div>
+      </div>
+    </div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Management"> </mat-tab>
+      <mat-tab label="Channels"> </mat-tab>
+      <mat-tab label="Integrations"> </mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="content">
+    <p>{{ feature.description }}</p>
+    <div class="flex-spacer"></div>
+    <div>
+      <button mat-stroked-button color="warn">Remove</button>
+    </div>
+  </div>
+</div>
