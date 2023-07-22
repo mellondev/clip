@@ -15,6 +15,11 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.tags {
+  flex-shrink: 0;
 }
 
 .feature-item:hover {
@@ -31,11 +36,18 @@
   color: #D3D6E0;
 }
 
+p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0px;
+}
+
 .material-icons.feature-icon {
   color: white;
   font-size: 36px;
   line-height: 1.25;
   width: 48px;
+  height: 48px;
   background-color: #446f9b;
   border-radius: 8px;
   text-align: center;

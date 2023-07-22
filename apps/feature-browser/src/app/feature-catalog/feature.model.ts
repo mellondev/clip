@@ -3,6 +3,7 @@ export interface Feature {
   name: string;
   description: string;
   image: string;
+  icon: string;
   tags: string[];
   documentation: string;
   publishedDate: Date;

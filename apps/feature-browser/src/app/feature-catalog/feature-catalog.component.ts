@@ -13,11 +13,10 @@ import { Feature } from './feature.model';
 })
 export class FeatureCatalogComponent {
   private catalogService = inject(CatalogService);
-  allFeatures$: Observable<Feature[]>;
+  allFeatures$ = this.catalogService.features$;
   featured$: Observable<Feature[]>;
 
   constructor() {
-    this.allFeatures$ = this.catalogService.features.pipe(takeUntilDestroyed());
-    this.featured$ = this.catalogService.features.pipe(takeUntilDestroyed(), map((features) => features.filter((f) => f.featured)));
+    this.featured$ = this.catalogService.features$.pipe(map((features) => features.filter((f) => f.featured)));
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Feature } from './feature.model';
-import { Observable, catchError, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, filter, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,33 +9,35 @@ import { Observable, catchError, map, of } from 'rxjs';
 export class CatalogService {
   featuresUrl = 'http://localhost:4202/assets/feature-catalog.json';
 
-  private featureList: Feature[] = [];
+  private _features = new BehaviorSubject<Feature[]>([]);
 
-  get features(): Observable<Feature[]> {
-    if (this.featureList.length === 0) {
-      return this.loadCatalog().pipe(
-        map((result) => (this.featureList = result))
-      );
-    }
+  features$ = this._features.asObservable();
 
-    return of(this.featureList);
+  constructor(private http: HttpClient) {
+    this.loadCatalog();
   }
 
-  remoteDefinitions: Record<string, string> = {};
-
-  constructor(private http: HttpClient) {}
-
   getFeatureByName(name: string): Observable<Feature | undefined> {
-    return this.features.pipe(
+    return this.features$.pipe(
       map((features) => features.find((f) => f.id === name))
     );
   }
 
-  private loadCatalog(): Observable<Feature[]> {
-    console.log('loading catalog');
-    return this.http.get<Feature[]>(this.featuresUrl).pipe(
-      catchError(this.handleError<Feature[]>('getFeatures', []))
+  getFeaturesByTag(tag: string): Observable<Feature[]> {
+    console.log(`getting features for tag: ${tag}`);
+    return this.features$.pipe(
+      map((features) => features.filter((f) => f.tags.includes(tag)))
     );
+  }
+
+  private loadCatalog() {
+    console.log('loading catalog');
+    this.http
+      .get<Feature[]>(this.featuresUrl)
+      .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])))
+      .subscribe((features) => {
+        this._features.next(features);
+      });
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

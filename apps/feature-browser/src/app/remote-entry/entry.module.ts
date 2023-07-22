@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { RemoteEntryComponent } from './entry.component';
 import { remoteRoutes } from './entry.routes';
@@ -15,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FeatureCatalogComponent } from '../feature-catalog/feature-catalog.component';
 import { FeaturedItemComponent } from '../featured-item/featured-item.component';
 import { FeatureItemComponent } from '../feature-item/feature-item.component';
+import { FeatureBrowseListComponent } from '../feature-browse-list/feature-browse-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { FeatureItemComponent } from '../feature-item/feature-item.component';
     FeatureDetailComponent,
     FeatureCatalogComponent,
     FeaturedItemComponent,
-    FeatureItemComponent
+    FeatureItemComponent,
+    FeatureBrowseListComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +38,9 @@ import { FeatureItemComponent } from '../feature-item/feature-item.component';
     MatCardModule,
     MatButtonModule,
     MatTabsModule,
+    MatIconModule,
+    MatDividerModule,
+    MatChipsModule,
 
     RouterModule.forChild(remoteRoutes),
   ],

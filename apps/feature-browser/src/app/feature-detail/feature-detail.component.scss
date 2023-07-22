@@ -1,8 +1,17 @@
+.feature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 .feature-heading-container {
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
   background-color: white;
+  align-items: center;
+  width: 100%;
 }
 
 .feature-heading {
@@ -11,6 +20,11 @@
   margin-bottom: 24px;
   align-items: center;
   background-color: white;
+  width: 1000px;
+}
+
+.tabs {
+  width: 1000px;
 }
 
 .heading-title {
@@ -48,4 +62,30 @@
   text-align: center;
   vertical-align: middle;
   padding: 2px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  width: 1000px;
+}
+
+.feature-detail {
+  height: 500px;
+  background-color: white;
+  border-radius: 6px;
+  border: #e5e6ea 0px solid;
+  padding: 28px;
+  flex: 1;
+}
+
+.feature-actions {
+  width: 200px;
+  background-color: white;
+  border-radius: 6px;
+  border: #e5e6ea 0px solid;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
 }

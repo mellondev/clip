@@ -1,7 +1,7 @@
 <div class="container">
   <div class="featured">
     <div class="featured-heading">
-      <h1 style="font-weight: 500;">Feature Catalog</h1>
+      <h1 style="font-weight: 500">Feature Catalog</h1>
     </div>
     <div class="featured-banner">
       <clip-featured-item
@@ -9,20 +9,35 @@
         *ngFor="let feature of featured$ | async"
       />
     </div>
-    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-      <mat-tab label="Management"> 
-        <div class="feature-list">
-          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
-      </div>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight="true" animationDuration="0ms">
+      <mat-tab label="Management">
+        <clip-feature-browse-list tag="management"></clip-feature-browse-list>
       </mat-tab>
-      <mat-tab label="Channels"> 
+      <mat-tab label="Channels">
         <div class="feature-list">
-          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
-      </div> </mat-tab>
+          <clip-feature-browse-list tag="channels"></clip-feature-browse-list>
+        </div>
+      </mat-tab>
       <mat-tab label="Integrations">
-        <div class="feature-list">
-          <clip-feature-item [feature]="feature"  *ngFor="let feature of allFeatures$ | async"/>
-      </div>
+        <clip-feature-browse-list tag="integrations"></clip-feature-browse-list>
+      </mat-tab>
+      <mat-tab label="Installed">
+        <div class="feature-listing">
+          <div
+            class="feature-list-item"
+            *ngFor="let feature of allFeatures$ | async"
+          >
+            <div class="feature-container">
+              <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>
+              <div class="feature-detail">
+                <div class="feature-name mat-h4">{{ feature.name }}</div>
+                <div class="feature-description">{{ feature.description }}</div>
+              </div>
+              <div class="feature-version">{{ feature.version }}</div>
+            </div>
+            <mat-divider></mat-divider>
+          </div>
+        </div>
       </mat-tab>
     </mat-tab-group>
   </div>

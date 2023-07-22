@@ -1,7 +1,7 @@
 <!-- <div class="feature-container"> -->
 <div class="feature-item mat-elevation-z1"  [routerLink]="[feature.id]">
   <div class="feature-new">NEW</div>
-  <div class="material-icons feature-icon">person</div>
+  <mat-icon class="material-icons feature-icon">{{ feature.icon }}</mat-icon>
   <div class="feature-name mat-headline-6">{{ feature.name }}</div>
   <p>{{ feature.description }}</p>
   <!-- </div> -->

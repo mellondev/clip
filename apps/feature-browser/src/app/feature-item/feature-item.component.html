@@ -1,14 +1,13 @@
 <!-- <div class="feature-container"> -->
-  <div class="feature-item" [routerLink]="[feature.id]">
-    <div class="feature-heading">
-      <div class="material-icons feature-icon">person</div>
-      <div class="feature-name mat-headline-6">{{ feature.name }}</div>
-    </div>
-    
-    <p>{{ feature.description }}</p>
-    <div class="flex-spacer"></div>
-    <div>
-    <button mat-stroked-button color="warn">Remove</button>
+<div class="feature-item" [routerLink]="[feature.id]">
+  <div class="feature-heading">
+    <mat-icon class="material-icons feature-icon">{{ feature.icon }}</mat-icon>
+    <div class="feature-name mat-headline-6">{{ feature.name }}</div>
   </div>
+
+  <p>{{ feature.description }}</p>
+  <div class="flex-spacer"></div>
+  <div>
+    <button mat-stroked-button color="primary" >Details</button>
   </div>
-  
+</div>

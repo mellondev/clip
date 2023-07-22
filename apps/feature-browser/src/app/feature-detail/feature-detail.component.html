@@ -7,17 +7,30 @@
         <div class="feature-version">{{ feature.version }}</div>
       </div>
     </div>
-    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-      <mat-tab label="Management"> </mat-tab>
-      <mat-tab label="Channels"> </mat-tab>
-      <mat-tab label="Integrations"> </mat-tab>
+    <mat-tab-group class="tabs" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Details"> </mat-tab>
+      <mat-tab label="Changelog"> </mat-tab>
+      <mat-tab label="Versions"> </mat-tab>
     </mat-tab-group>
   </div>
   <div class="content">
-    <p>{{ feature.description }}</p>
-    <div class="flex-spacer"></div>
-    <div>
-      <button mat-stroked-button color="warn">Remove</button>
+    <div class="feature-detail">
+      <p>{{ feature.description }}</p>
+      <div class="flex-spacer"></div>
+    </div>
+    <div class="feature-actions">
+      <h3>Actions</h3>
+      <button mat-flat-button color="primary">Install Feature</button>
+      <mat-divider></mat-divider>
+      <h3>Latest Version</h3>
+      <div class="feature-version">{{ feature.version }}</div>
+      <mat-divider></mat-divider>
+      <h3>Tags</h3>
+      <mat-chip-set>
+        <mat-chip role="listitem" *ngFor="let tag of feature.tags">
+          {{ tag }}</mat-chip
+        >
+      </mat-chip-set>
     </div>
   </div>
 </div>
