@@ -19,6 +19,10 @@ import { FeatureCatalogComponent } from '../feature-catalog/feature-catalog.comp
 import { FeaturedItemComponent } from '../featured-item/featured-item.component';
 import { FeatureItemComponent } from '../feature-item/feature-item.component';
 import { FeatureBrowseListComponent } from '../feature-browse-list/feature-browse-list.component';
+import { FeatureOverviewComponent } from '../feature-detail/feature-overview/feature-overview.component';
+import { FeatureChangelogComponent } from '../feature-detail/feature-changelog/feature-changelog.component';
+import { FeatureVersionsComponent } from '../feature-detail/feature-versions/feature-versions.component';
+import { FeatureComponentsComponent } from '../feature-detail/feature-components/feature-components.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { FeatureBrowseListComponent } from '../feature-browse-list/feature-brows
     FeaturedItemComponent,
     FeatureItemComponent,
     FeatureBrowseListComponent,
+    FeatureOverviewComponent,
+    FeatureChangelogComponent,
+    FeatureVersionsComponent,
+    FeatureComponentsComponent
   ],
   imports: [
     CommonModule,

@@ -17,16 +17,22 @@
 .feature-heading {
   display: flex;
   flex-direction: row;
-  margin-bottom: 24px;
   align-items: center;
   background-color: white;
   width: 1000px;
+}
+
+.feature-actions {
+  margin-top: 8px;
 }
 
 .tabs {
   width: 1000px;
 }
 
+.router-link-active {
+  color: blue;
+}
 .heading-title {
  display: flex;
  flex-direction: column;
@@ -35,16 +41,6 @@
 
 .feature-name {
   margin-bottom: 6px;
-}
-
-.feature-new {
-  margin-left: auto;
-  background-color: #7ab55c;
-  border-radius: 24px;
-  width: 48px;
-  text-align: center;
-  color: white;
-  font-size: 12px;
 }
 
 .feature-icon {
@@ -65,27 +61,5 @@
 }
 
 .content {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
   width: 1000px;
-}
-
-.feature-detail {
-  height: 500px;
-  background-color: white;
-  border-radius: 6px;
-  border: #e5e6ea 0px solid;
-  padding: 28px;
-  flex: 1;
-}
-
-.feature-actions {
-  width: 200px;
-  background-color: white;
-  border-radius: 6px;
-  border: #e5e6ea 0px solid;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
 }

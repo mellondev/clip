@@ -39,7 +39,7 @@ import { loadRemoteModule } from '@nx/angular/mf';
     BrowserModule,
     HttpClientModule,
 
-    RouterModule.forRoot(APP_ROUTES, { bindToComponentInputs: true }),
+    RouterModule.forRoot(APP_ROUTES, { bindToComponentInputs: true, paramsInheritanceStrategy: 'always' }),
 
     BrowserAnimationsModule,
     MatGridListModule,

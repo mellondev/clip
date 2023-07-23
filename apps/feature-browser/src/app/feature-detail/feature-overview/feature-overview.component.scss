@@ -1,0 +1,33 @@
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.feature-detail {
+  height: 500px;
+  background-color: white;
+  border-radius: 6px;
+  // border: #e5e6ea 1px solid;
+  padding: 28px;
+  flex: 1;
+}
+
+.feature-side-panel {
+  width: 200px;
+  background-color: white;
+  border-radius: 6px;
+  border: #e5e6ea 0px solid;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-weight: 600;
+  }
+}
+
+.divider {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}

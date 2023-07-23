@@ -1,0 +1,14 @@
+<div class="content">
+  <div class="feature-listing" *ngIf="feature$ | async as feature">
+    <div class="feature-list-item" *ngFor="let version of feature.versions">
+      <div class="feature-container">
+        <div class="feature-version">{{ version.version }}</div>
+        <div class="feature-detail">
+          <div class="feature-name mat-h4">{{ version.changelog }}</div>
+        </div>
+        <div class="feature-version">{{ version.publishedDate | date }}</div>
+      </div>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+</div>

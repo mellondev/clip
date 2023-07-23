@@ -1,0 +1,24 @@
+<div class="content" *ngIf="feature$ | async as feature">
+    <div class="feature-detail">
+      <p>{{ feature.description }}</p>
+      <div class="flex-spacer"></div>
+    </div>
+
+    <div class="feature-side-panel">
+      <h3>Version</h3>
+      <div class="feature-version">{{ feature.version }}</div>
+      <div>{{ feature.publishedDate | date }}</div>
+      <mat-divider class="divider"></mat-divider>
+      <h3>Tags</h3>
+      <mat-chip-set>
+        <mat-chip role="listitem" *ngFor="let tag of feature.tags">
+          {{ tag }}</mat-chip
+        >
+      </mat-chip-set>
+      <mat-divider class="divider"></mat-divider>
+      <h3>Documentation</h3>
+      <a href="{{ feature.documentation }}" target="_blank">Documentation</a>
+      <mat-divider class="divider"></mat-divider>
+      <h3>Dependencies</h3>
+    </div>
+  </div>
