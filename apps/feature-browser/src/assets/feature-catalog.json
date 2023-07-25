@@ -3,6 +3,25 @@
     "id": "cxp-agents",
     "name": "Agent Management",
     "description": "Manage your Agents details and provide dashboard metrics based on your agents",
+    "remoteUrl": "http://localhost:4203",
+    "route": {
+      "id": "clipAgentsRoute",
+      "text": "Agent Management",
+      "icon": "dashboard",
+      "route": "agents",
+      "subRoutes": [
+        {
+          "id": "listAgentsLink",
+          "text": "Agents",
+          "route": "/agents"
+        },
+        {
+          "id": "editAgentLink",
+          "text": "Edit Agent",
+          "route": "/agents/edit"
+        }
+      ]
+    },
     "image": "http://localhost:4023/assets/chart-news.png",
     "icon": "support_agent",
     "tags": ["agent", "management", "dashboard", "metrics"],
@@ -10,7 +29,7 @@
     "publishedDate": "2023-07-20T00:00:00.000Z",
     "changelog": "First release",
     "featured": true,
-    "version":"1.0.1",
+    "version": "1.0.1",
     "versions": [
       {
         "version": "1.0.0",
@@ -28,13 +47,17 @@
         "id": "cxp-agents-status",
         "name": "Agent Status",
         "description": "Chart showing your agents status",
-        "type": "Dashboard Widget"
+        "type": "Dashboard Widget",
+        "module": "Dashboard/AgentStatus",
+        "componentName": "AgentStatusComponent"
       },
       {
         "id": "cxp-agents-list",
         "name": "Agent List",
         "description": "Table showing your agents",
-        "type": "Dashboard Widget"
+        "type": "Dashboard Widget",
+        "module": "AgentList",
+        "componentName": "AgentListComponent"
       }
     ]
   },
@@ -42,6 +65,26 @@
     "id": "cxp-users",
     "name": "User Management",
     "description": "Manage the users, roles and permissions of your CXP instance",
+    "remoteUrl": "http://localhost:4201",
+    "route": {
+      "id": "clipUsersRoute",
+      "text": "Users",
+      "icon": "dashboard",
+      "module": "./UsersModule",
+      "route": "users",
+      "subRoutes": [
+        {
+          "id": "usersLink",
+          "text": "Users",
+          "route": "/users"
+        },
+        {
+          "id": "teamsLink",
+          "text": "Roles",
+          "route": "/users/roles"
+        }
+      ]
+    },
     "image": "http://localhost:4022/assets/user.png",
     "icon": "group",
     "tags": ["user", "management", "dashboard", "metrics"],
@@ -49,7 +92,7 @@
     "publishedDate": "2023-07-10T00:00:00.000Z",
     "changelog": "Bug fixes",
     "featured": true,
-    "version":"1.0.1",
+    "version": "1.0.1",
     "versions": [
       {
         "version": "1.0.0",
@@ -82,7 +125,7 @@
     "publishedDate": "2023-07-10T00:00:00.000Z",
     "changelog": "Bug fixes",
     "featured": false,
-    "version":"1.0.1",
+    "version": "1.0.1",
     "versions": [
       {
         "version": "1.0.0",
@@ -115,7 +158,7 @@
     "publishedDate": "2023-07-10T00:00:00.000Z",
     "changelog": "Bug fixes",
     "featured": false,
-    "version":"1.0.1",
+    "version": "1.0.1",
     "versions": [
       {
         "version": "1.0.0",
@@ -148,7 +191,7 @@
     "publishedDate": "2023-07-10T00:00:00.000Z",
     "changelog": "Bug fixes",
     "featured": false,
-    "version":"1.0.3",
+    "version": "1.0.3",
     "versions": [
       {
         "version": "1.0.0",
@@ -177,6 +220,72 @@
         "name": "User Management",
         "description": "Management pages for users, roles and permissions",
         "type": "Management Page"
+      }
+    ]
+  },
+  {
+    "id": "cxp-feature-browser",
+    "name": "Features",
+    "description": "Manage all your clip features, you can enable & disable features as well as configure your new features",
+    "remoteUrl": "http://localhost:4202",
+    "route": {
+      "id": "clipFeaturesRoute",
+      "text": "Features",
+      "icon": "dashboard",
+      "route": "feature-browser"
+    },
+    "image": "http://localhost:4022/assets/user.png",
+    "icon": "playlist_remove",
+    "tags": ["channels"],
+    "documentation": "http://localhost:4022/docs/cxp-users",
+    "publishedDate": "2023-07-10T00:00:00.000Z",
+    "changelog": "Bug fixes",
+    "featured": false,
+    "version": "1.0.3",
+    "versions": [
+      {
+        "version": "1.0.0",
+        "publishedDate": "2023-07-10T00:00:00.000Z",
+        "changelog": "First release"
+      },
+      {
+        "version": "1.0.1",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      },
+      {
+        "version": "1.0.2",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      },
+      {
+        "version": "1.0.3",
+        "publishedDate": "2023-07-11T00:00:00.000Z",
+        "changelog": "Bug fixes"
+      }
+    ],
+    "components": [
+      {
+        "id": "cxp-users-module",
+        "name": "User Management",
+        "description": "Management pages for users, roles and permissions",
+        "type": "Management Page"
+      },
+      {
+        "id": "feature-metrics",
+        "name": "Feature Metrics",
+        "description": "See all your feature metrics",
+        "type": "Dashboard Widget",
+        "module": "Widget",
+        "componentName": "FeatureMetricWidgetComponent"
+      },
+      {
+        "id": "feature-news",
+        "name": "Feature New",
+        "type": "Dashboard Widget",
+        "description": "All the latest feature news",
+        "module": "NewsWidget",
+        "componentName": "FeatureNewsWidgetComponent"
       }
     ]
   }

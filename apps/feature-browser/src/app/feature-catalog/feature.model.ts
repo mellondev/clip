@@ -2,6 +2,7 @@ export interface Feature {
   id: string;
   name: string;
   description: string;
+  remoteUrl: string;
   image: string;
   icon: string;
   tags: string[];
@@ -12,6 +13,16 @@ export interface Feature {
   version: string;
   versions: FeatureVersion[];
   components: FeatureComponent[];
+  route?: FeatureRoute;
+}
+
+export interface FeatureRoute {
+  id: string;
+  text: string;
+  icon?: string;
+  route?: string;
+  module?: string;
+  subRoutes?: FeatureRoute[];
 }
 
 export interface FeatureVersion {
@@ -25,6 +36,8 @@ export interface FeatureComponent {
   name: string;
   description: string;
   type: string;
+  module: string;
+  componentName: string;
 }
 
 

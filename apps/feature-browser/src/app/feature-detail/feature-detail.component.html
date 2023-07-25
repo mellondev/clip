@@ -6,7 +6,8 @@
         <div class="feature-name mat-headline-5">{{ feature.name }}</div>
         <div class="feature-version">{{ feature.version }}</div>
         <div class="feature-actions">
-          <button mat-flat-button color="primary">Install Feature</button>
+          <button mat-flat-button color="primary" (click)="install(feature)">Install Feature</button>
+          <button mat-flat-button color="warn" (click)="remove(feature)">Remove</button>
         </div>
       </div>
     </div>

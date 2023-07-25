@@ -6,6 +6,7 @@ import {
 import { FeatureRoute, FeatureService } from '@clip/core';
 import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'clip-side-nav',
@@ -15,12 +16,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 export class SideNavComponent {
   sideNavItems = DEFAULT_APPLICATION_ROUTES;
 
-  features$ = this.featureService.features;
-
   constructor(private featureService: FeatureService, private router: Router) {
-    this.featureService.features
-      .pipe(takeUntilDestroyed())
+    console.log('SideNav constuctor');
+    this.featureService.features$
+      .pipe(takeUntilDestroyed(),
+      tap((features) => console.log('Sidenav: features', features)))
       .subscribe((features) => {
+        this.sideNavItems = [...DEFAULT_APPLICATION_ROUTES];
         this.sideNavItems.push(
           ...features.filter(f => f.route).map((feature) =>
             this.featureRouteToApplicationRoute(feature.route!)
@@ -45,7 +47,6 @@ export class SideNavComponent {
   }
 
   loadFeature(featureName: string, navigate = false) {
-    // this.featureService.loadFeature(featureName);
     if (navigate) {
       this.router.navigateByUrl(featureName);
     }

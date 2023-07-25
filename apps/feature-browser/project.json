@@ -1,5 +1,5 @@
 {
-  "name": "feature-browser",
+  "name": "cxp-feature-browser",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "clip",
@@ -63,10 +63,10 @@
       },
       "configurations": {
         "production": {
-          "browserTarget": "feature-browser:build:production"
+          "browserTarget": "cxp-feature-browser:build:production"
         },
         "development": {
-          "browserTarget": "feature-browser:build:development"
+          "browserTarget": "cxp-feature-browser:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "feature-browser:build"
+        "browserTarget": "cxp-feature-browser:build"
       }
     },
     "lint": {
@@ -105,16 +105,16 @@
       "executor": "@nx/web:file-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "feature-browser:build",
+        "buildTarget": "cxp-feature-browser:build",
         "port": 4202,
         "watch": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "feature-browser:build:development"
+          "buildTarget": "cxp-feature-browser:build:development"
         },
         "production": {
-          "buildTarget": "feature-browser:build:production"
+          "buildTarget": "cxp-feature-browser:build:production"
         }
       }
     }

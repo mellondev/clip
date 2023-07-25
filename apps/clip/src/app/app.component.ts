@@ -14,8 +14,6 @@ export class AppComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
   isLoggedIn$ = this.userService.isUserLoggedIn$;
-  features$ = this.featureService.features;
-
   remoteDefinitions: Record<string, string> = {};
 
   isHandset$: Observable<boolean> = this.breakpointObserver

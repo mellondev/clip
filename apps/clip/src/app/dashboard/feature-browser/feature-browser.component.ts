@@ -16,7 +16,7 @@ export class FeatureBrowserComponent {
   @Output() widgetAdded = new EventEmitter<DashboardFeatureWidget>();
 
   constructor() {
-    this.features$ = this.featureService.features.pipe(
+    this.features$ = this.featureService.features$.pipe(
       takeUntilDestroyed(),
       map((features) => features.filter((f) => f.dashboardWidgets?.length > 0))
     );

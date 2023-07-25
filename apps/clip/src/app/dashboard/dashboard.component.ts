@@ -62,9 +62,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dashboard = [];
 
-    this.featureService.features
+    this.featureService.features$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((resp) => {
+        console.log('features', resp);
         this.dashboard = this.dashboardService.loadDashboard().map((item) => {
           const feature = resp.find((f) => f.name === item.featureName);
           const widget = feature?.dashboardWidgets?.find(
@@ -76,6 +77,8 @@ export class DashboardComponent implements OnInit {
             rows: item.rows,
             cols: item.cols,
             featureWidget: { feature, widget },
+            featureName: item.featureName,
+            widgetName: item.widgetName
           };
         });
         this.isLoading = false;
@@ -98,7 +101,7 @@ export class DashboardComponent implements OnInit {
             rows: item.rows,
             cols: item.cols,
             featureName: item.featureWidget?.feature?.name,
-            widgetName: item.featureWidget?.widget?.name,
+            widgetName: item.featureWidget?.widget?.name
           };
         }
       );

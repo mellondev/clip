@@ -1,7 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Feature } from './feature.model';
-import { BehaviorSubject, Observable, catchError, filter, map, of } from 'rxjs';
+import { Feature as FeatureCore, FeatureService } from '@clip/core';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  combineLatest,
+  map,
+  of,
+  tap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +19,13 @@ import { BehaviorSubject, Observable, catchError, filter, map, of } from 'rxjs';
 export class CatalogService {
   featuresUrl = 'http://localhost:4202/assets/feature-catalog.json';
 
-  private _features = new BehaviorSubject<Feature[]>([]);
+  private featureService = inject(FeatureService);
 
+  private _features = new BehaviorSubject<Feature[]>([]);
   features$ = this._features.asObservable();
+
+  private _installedFeatures = new BehaviorSubject<Feature[]>([]);
+  installedFeatures$ = this._installedFeatures.asObservable();
 
   constructor(private http: HttpClient) {
     this.loadCatalog();
@@ -30,13 +44,75 @@ export class CatalogService {
     );
   }
 
+  // getInstalledFeatures(): Observable<Feature[]> {
+  //   return combineLatest([this.features$, this.featureService.features$]).pipe(
+  //     tap(([features, installedFeatures]) => {
+  //       console.log('installed features', installedFeatures);
+  //       console.log('all features', features);
+  //     }),
+  //     map(([features, installedFeatures]) => {
+  //       return features.filter(
+  //         (f) =>
+  //           installedFeatures.find((installed) => installed.name === f.id) !==
+  //           undefined
+  //       );
+  //     })
+  //   );
+  // }
+
+  installFeature(feature: Feature): boolean {
+    const installFeature: FeatureCore = {
+      name: feature.id,
+      title: feature.name,
+      description: feature.description,
+      route: feature.route,
+      remoteUrl: feature.remoteUrl,
+      dashboardWidgets: feature.components
+        .filter((c) => c.type === 'Dashboard Widget')
+        .map((c) => {
+          return {
+            name: c.id,
+            description: c.description,
+            title: c.name,
+            module: c.module,
+            componentName: c.componentName,
+          };
+        }),
+    } as FeatureCore;
+
+    return this.featureService.installFeature(installFeature);
+  }
+
+  removeFeature(featureId: string): boolean {
+    return this.featureService.removeFeature(featureId);
+  }
+
   private loadCatalog() {
     console.log('loading catalog');
-    this.http
+    const catalogFeatures = this.http
       .get<Feature[]>(this.featuresUrl)
-      .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])))
-      .subscribe((features) => {
+      .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])));
+    // .subscribe((features) => {
+    //   this._features.next(features);
+    // });
+
+    combineLatest([catalogFeatures, this.featureService.features$])
+      .pipe(
+        tap(([features, installedFeatures]) => {
+          console.log('installed features', installedFeatures);
+          console.log('all features', features);
+        }),
+        takeUntilDestroyed()
+      )
+      .subscribe(([features, installedFeatures]) => {
         this._features.next(features);
+        this._installedFeatures.next(
+          features.filter(
+            (f) =>
+              installedFeatures.find((installed) => installed.name === f.id) !==
+              undefined
+          )
+        );
       });
   }
 

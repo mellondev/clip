@@ -25,7 +25,7 @@
         <div class="feature-listing">
           <div
             class="feature-list-item"
-            *ngFor="let feature of allFeatures$ | async"
+            *ngFor="let feature of installedFeatures$ | async"
           >
             <div class="feature-container">
               <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>

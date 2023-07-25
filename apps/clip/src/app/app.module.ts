@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Route, Router, RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
@@ -68,19 +68,19 @@ import { loadRemoteModule } from '@nx/angular/mf';
 export class AppModule {}
 
 export function initializeApplication(router: Router, featureService: FeatureService)  {
-  return () => featureService.features.pipe(
+  return () => featureService.loadFeatures().pipe(
     tap((features) => {
       const featureRoutes: Routes = features
       .filter((f) => f.route)
       .map((f) => ({
-        path: f.name,
+        path: f.route?.route ?? f.name,
         loadChildren: () =>
           loadRemoteModule(f.name, f.route?.module ?? './Module').then(
             (m) => m.RemoteEntryModule
           ),
       }))
 
-      console.log(APP_ROUTES);
+
       APP_ROUTES[0].children?.push(...featureRoutes);
       console.log(APP_ROUTES);
       router.resetConfig(APP_ROUTES);

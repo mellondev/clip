@@ -20,16 +20,18 @@ export class WidgetProxyComponent implements OnChanges {
   @ViewChild('placeHolder', { read: ViewContainerRef, static: true })
   viewContainer!: ViewContainerRef;
 
-  @Input() featureWidget!: DashboardFeatureWidget
+  @Input() featureWidget!: DashboardFeatureWidget;
 
   async ngOnChanges() {
     // this.featureService.loadFeature(this.featureWidget.feature.name);
     this.viewContainer.clear();
 
-    const component = await loadRemoteModule(
-      this.featureWidget.feature.name,
-      './' + this.featureWidget.widget.module
-    ).then((m) => m[this.featureWidget.widget.componentName]);
-    this.viewContainer.createComponent(component);
+    if (this.featureWidget.feature) {
+      const component = await loadRemoteModule(
+        this.featureWidget.feature.name,
+        './' + this.featureWidget.widget.module
+      ).then((m) => m[this.featureWidget.widget.componentName]);
+      this.viewContainer.createComponent(component);
+    }
   }
 }
