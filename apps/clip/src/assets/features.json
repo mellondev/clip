@@ -87,7 +87,7 @@
         "name": "cxp-agents-list",
         "title": "Agent List",
         "description": "List of Agents",
-        "module": "AgentList",
+        "module": "Dashboard/AgentList",
         "componentName": "AgentListComponent"
       }
     ]

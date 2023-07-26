@@ -1,0 +1,14 @@
+<div style="display: flex; flex-direction: column; height: 100%; width: 100%">
+  <div style="flex: 1 1 0; overflow:auto; overflow-y: hidden; overflow-x: hidden;">
+    <canvas
+      baseChart
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="chartLegend"
+      [type]="chartType"
+      style="width: 100%; height: 100%"
+    >
+    </canvas>
+  </div>
+</div>

@@ -1,8 +1,7 @@
 import { Route } from '@angular/router';
-import { RemoteEntryComponent } from './entry.component';
-import { AgentListComponent } from '../agent-list/agent-list.component';
+import { AgentsComponent } from '../management/agents/agents.component';
 
 export const remoteRoutes: Route[] = [
-  { path: '', component: AgentListComponent },
-  { path: 'edit', component: RemoteEntryComponent },
+  { path: '', component: AgentsComponent },
+  { path: 'edit', component: AgentsComponent },
 ];

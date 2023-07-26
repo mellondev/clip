@@ -54,3 +54,10 @@ p {
   vertical-align: middle;
   padding: 2px;
 }
+
+.installed {
+  display: flex;
+  align-items: center;
+  color: rgb(82, 167, 89);
+  gap: 8px;
+}

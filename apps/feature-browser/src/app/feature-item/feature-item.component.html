@@ -8,6 +8,7 @@
   <p>{{ feature.description }}</p>
   <div class="flex-spacer"></div>
   <div>
-    <button mat-stroked-button color="primary" >Details</button>
+    <!-- <button mat-stroked-button color="primary" >Details</button> -->
+    <div class="installed" *ngIf="feature.installed"><div class="flex-spacer"></div><mat-icon>verified</mat-icon> INSTALLED</div>
   </div>
 </div>

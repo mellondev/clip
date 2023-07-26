@@ -56,7 +56,7 @@
         "name": "Agent List",
         "description": "Table showing your agents",
         "type": "Dashboard Widget",
-        "module": "AgentList",
+        "module": "Dashboard/AgentList",
         "componentName": "AgentListComponent"
       }
     ]

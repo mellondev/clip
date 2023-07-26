@@ -78,14 +78,12 @@ export class CatalogService {
       .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])));
 
     combineLatest([catalogFeatures$, this.featureService.features$])
-      .pipe(
-        tap(([features, installedFeatures]) => {
-          console.log('installed features', installedFeatures);
-          console.log('all features', features);
-        }),
-        takeUntilDestroyed()
-      )
+      .pipe(takeUntilDestroyed())
       .subscribe(([features, installedFeatures]) => {
+        features.map((f) => {
+          f.installed = installedFeatures.find(ifc => ifc.name === f.id) !== undefined;
+        });
+        
         this._features.next(features);
         this._installedFeatures.next(
           features.filter(

@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: center;
+  padding: 16px 0;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-card {
+  flex: 1;
+  height: 200px;
+
+  mat-card-content {
+    height: 100%;
+  }
+}
+
+.list-card {
+  flex: 1;
+}
+
+.list-card-content {
+  overflow-y: auto;
+}

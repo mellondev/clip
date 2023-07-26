@@ -14,6 +14,7 @@ export interface Feature {
   versions: FeatureVersion[];
   components: FeatureComponent[];
   routing?: FeatureRoute;
+  installed?: boolean;
 }
 
 export interface FeatureRoute {

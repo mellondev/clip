@@ -34,6 +34,7 @@ gridster-item.gridster-item-moving {
 .dashboard-card-content-container
 {
   height: 100%;
+  overflow-y: auto;
 }
 
 .dashboard-card-content
@@ -43,6 +44,25 @@ gridster-item.gridster-item-moving {
   flex-direction: column;
   align-content: center;
   justify-content: center;
+}
+
+
+.dashboard-card-content-container::-webkit-scrollbar {
+  width: 5px;
+  right: 5px;
+  position: absolute;
+}
+
+// .scrollbar::-webkit-scrollbar-track {
+//   // border-radius: 8px;
+//   // background-color: #e7e7e7;
+//   // border: 1px solid #cacaca;
+// }
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(59, 66, 82, 0.137254902);
+  width: 4px;
 }
 
 .clip-progress-bar {

@@ -7,6 +7,7 @@ import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['./agent-status.component.scss'],
 })
 export class AgentStatusComponent {
+  
   public chartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
