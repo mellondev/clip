@@ -44,28 +44,12 @@ export class CatalogService {
     );
   }
 
-  // getInstalledFeatures(): Observable<Feature[]> {
-  //   return combineLatest([this.features$, this.featureService.features$]).pipe(
-  //     tap(([features, installedFeatures]) => {
-  //       console.log('installed features', installedFeatures);
-  //       console.log('all features', features);
-  //     }),
-  //     map(([features, installedFeatures]) => {
-  //       return features.filter(
-  //         (f) =>
-  //           installedFeatures.find((installed) => installed.name === f.id) !==
-  //           undefined
-  //       );
-  //     })
-  //   );
-  // }
-
   installFeature(feature: Feature): boolean {
     const installFeature: FeatureCore = {
       name: feature.id,
       title: feature.name,
       description: feature.description,
-      route: feature.route,
+      route: feature.routing,
       remoteUrl: feature.remoteUrl,
       dashboardWidgets: feature.components
         .filter((c) => c.type === 'Dashboard Widget')
@@ -89,14 +73,11 @@ export class CatalogService {
 
   private loadCatalog() {
     console.log('loading catalog');
-    const catalogFeatures = this.http
+    const catalogFeatures$ = this.http
       .get<Feature[]>(this.featuresUrl)
       .pipe(catchError(this.handleError<Feature[]>('getFeatures', [])));
-    // .subscribe((features) => {
-    //   this._features.next(features);
-    // });
 
-    combineLatest([catalogFeatures, this.featureService.features$])
+    combineLatest([catalogFeatures$, this.featureService.features$])
       .pipe(
         tap(([features, installedFeatures]) => {
           console.log('installed features', installedFeatures);

@@ -81,6 +81,7 @@ export class DashboardComponent implements OnInit {
             widgetName: item.widgetName
           };
         });
+        console.log(this.dashboard);
         this.isLoading = false;
       });
   }
@@ -141,7 +142,7 @@ export class DashboardComponent implements OnInit {
       y: 0,
       rows: 4,
       cols: 4,
-      featureWidget,
+      featureWidget
     });
 
     console.log(this.dashboard);

@@ -5,7 +5,7 @@
     "rows": 4,
     "cols": 4,
     "featureName": "agents",
-    "widgetName": "agent-status"
+    "widgetName": "cxp-agent-status"
   },
   {
     "x": 8,
@@ -29,6 +29,6 @@
     "rows": 4,
     "cols": 8,
     "featureName": "agents",
-    "widgetName": "agent-list"
+    "widgetName": "cxp-agent-list"
   }
 ]

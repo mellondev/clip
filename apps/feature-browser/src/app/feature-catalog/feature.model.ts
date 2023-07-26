@@ -13,7 +13,7 @@ export interface Feature {
   version: string;
   versions: FeatureVersion[];
   components: FeatureComponent[];
-  route?: FeatureRoute;
+  routing?: FeatureRoute;
 }
 
 export interface FeatureRoute {

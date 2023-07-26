@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { Feature } from '../feature-catalog/feature.model';
 import { CatalogService } from '../feature-catalog/catalog-service';
-import { Observable } from 'rxjs';
+import { combineLatest } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'clip-feature-detail',
@@ -9,14 +10,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./feature-detail.component.scss'],
 })
 export class FeatureDetailComponent implements OnInit {
+  
   @Input() featureName?: string;
+  
   catalogService = inject(CatalogService);
+  destroyRef = inject(DestroyRef);
 
-  feature$?: Observable<Feature | undefined>;
+  feature?: Feature;
+  installed = false;
 
   ngOnInit(): void {
-    this.feature$ = this.catalogService
-      .getFeatureByName(this.featureName ? this.featureName : '');
+    combineLatest([
+      this.catalogService.getFeatureByName(this.featureName ?? ''),
+      this.catalogService.installedFeatures$,
+    ])
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(([feature, installedFeatures]) => {
+        this.feature = feature;
+        this.installed = installedFeatures.some((f) => f.id === feature?.id);
+      });
   }
 
   install(feature: Feature) {

@@ -1,4 +1,4 @@
-<div class="feature-container" *ngIf="feature$ | async as feature">
+<div class="feature-container" *ngIf="feature">
   <div class="feature-heading-container">
     <div class="feature-heading">
       <div class="material-icons feature-icon">person</div>
@@ -6,8 +6,8 @@
         <div class="feature-name mat-headline-5">{{ feature.name }}</div>
         <div class="feature-version">{{ feature.version }}</div>
         <div class="feature-actions">
-          <button mat-flat-button color="primary" (click)="install(feature)">Install Feature</button>
-          <button mat-flat-button color="warn" (click)="remove(feature)">Remove</button>
+          <button mat-flat-button color="primary" (click)="install(feature)" *ngIf="!installed">Install Feature</button>
+          <button mat-flat-button color="warn" (click)="remove(feature)" *ngIf="installed">Remove</button>
         </div>
       </div>
     </div>

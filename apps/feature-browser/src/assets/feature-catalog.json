@@ -4,7 +4,7 @@
     "name": "Agent Management",
     "description": "Manage your Agents details and provide dashboard metrics based on your agents",
     "remoteUrl": "http://localhost:4203",
-    "route": {
+    "routing": {
       "id": "clipAgentsRoute",
       "text": "Agent Management",
       "icon": "dashboard",
@@ -66,7 +66,7 @@
     "name": "User Management",
     "description": "Manage the users, roles and permissions of your CXP instance",
     "remoteUrl": "http://localhost:4201",
-    "route": {
+    "routing": {
       "id": "clipUsersRoute",
       "text": "Users",
       "icon": "dashboard",
@@ -228,7 +228,7 @@
     "name": "Features",
     "description": "Manage all your clip features, you can enable & disable features as well as configure your new features",
     "remoteUrl": "http://localhost:4202",
-    "route": {
+    "routing": {
       "id": "clipFeaturesRoute",
       "text": "Features",
       "icon": "dashboard",

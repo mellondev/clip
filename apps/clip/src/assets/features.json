@@ -77,14 +77,14 @@
     },
     "dashboardWidgets": [
       {
-        "name": "agent-status",
+        "name": "cxp-agents-status",
         "title": "Agent Status",
         "description": "Overview of the agent status",
         "module": "Dashboard/AgentStatus",
         "componentName": "AgentStatusComponent"
       },
       {
-        "name": "agent-list",
+        "name": "cxp-agents-list",
         "title": "Agent List",
         "description": "List of Agents",
         "module": "AgentList",
