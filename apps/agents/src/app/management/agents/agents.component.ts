@@ -9,9 +9,11 @@ import { AGENT_DATA } from './agents.model';
 export class AgentsComponent {
   displayedColumns: string[] = [
     'name',
+    "team",
     'accepted',
     'rejected',
-    'avgHandling'
+    'avgHandling',
+    "state",
   ];
   dataSource = AGENT_DATA;
 }

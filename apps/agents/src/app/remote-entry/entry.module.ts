@@ -14,9 +14,10 @@ import { AgentListComponent } from '../dashboard/agent-list/agent-list.component
 import { AgentsComponent } from '../management/agents/agents.component';
 import { LoggedInTrendComponent } from '../dashboard/logged-in-trend/logged-in-trend.component';
 import { SlaTrendComponent } from '../dashboard/sla-trend/sla-trend.component';
+import { AgentStatusBadgeComponent } from '../management/agents/agent-status-badge/agent-status-badge.component';
 
 @NgModule({
-  declarations: [AgentStatusComponent, AgentListComponent, AgentsComponent, LoggedInTrendComponent, SlaTrendComponent],
+  declarations: [AgentStatusComponent, AgentListComponent, AgentsComponent, LoggedInTrendComponent, SlaTrendComponent, AgentStatusBadgeComponent],
   imports: [
     CommonModule,
 

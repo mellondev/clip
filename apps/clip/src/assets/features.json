@@ -89,6 +89,20 @@
         "description": "List of Agents",
         "module": "Dashboard/AgentList",
         "componentName": "AgentListComponent"
+      },
+      {
+        "name": "agents-sla-trend",
+        "title": "SLA Trend",
+        "description": "Chart showing the current SLA trend",
+        "module": "Dashboard/SLATrend",
+        "componentName": "SlaTrendComponent"
+      },
+      {
+        "name": "agents-logged-in",
+        "title": "Agent Logged In",
+        "description": "Chart showing the number of agents logged in over time",
+        "module": "Dashboard/LoginTrend",
+        "componentName": "LoggedInTrendComponent"
       }
     ]
   }

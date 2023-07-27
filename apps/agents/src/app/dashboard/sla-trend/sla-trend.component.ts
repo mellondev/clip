@@ -9,6 +9,7 @@ import { ChartOptions, ChartType, ChartDataset } from 'chart.js';
 export class SlaTrendComponent {
   public chartOptions: ChartOptions = {
     responsive: true,
+    transitions: { show: { animation: { duration: 0 } } },
     maintainAspectRatio: false,
     elements: {
       line: {

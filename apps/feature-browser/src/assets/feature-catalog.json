@@ -58,6 +58,22 @@
         "type": "Dashboard Widget",
         "module": "Dashboard/AgentList",
         "componentName": "AgentListComponent"
+      },
+      {
+        "id": "agents-sla-trend",
+        "name": "SLA Trend",
+        "description": "Chart showing the current SLA trend",
+        "type": "Dashboard Widget",
+        "module": "Dashboard/SLATrend",
+        "componentName": "SlaTrendComponent"
+      },
+      {
+        "id": "agents-logged-in",
+        "name": "Agent Logged In",
+        "description": "Chart showing the number of agents logged in over time",
+        "type": "Dashboard Widget",
+        "module": "Dashboard/LoginTrend",
+        "componentName": "LoggedInTrendComponent"
       }
     ]
   },
