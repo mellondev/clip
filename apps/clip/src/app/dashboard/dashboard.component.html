@@ -55,6 +55,7 @@
               *ngIf="designMode"
               color="accent"
               class="more-button"
+              (mousedown)="$event.stopPropagation()" 
               (click)="removeItem(item)"
             >
               <mat-icon>close</mat-icon>
