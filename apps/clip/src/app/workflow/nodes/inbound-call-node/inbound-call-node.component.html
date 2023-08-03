@@ -1,0 +1,18 @@
+<div
+
+  data-jtk-target="true"
+  data-jtk-target-port-type="target"
+  data-jtk-port="target"
+  class="simple-node"
+>
+  <!-- <div class="q-text" (dblclick)="startEditing()" (blur)="stopEditing()">{{obj['title'] ?? 'QUESTION'}}</div> -->
+  <div class="simple-icon-container">
+    <div class="material-icons simple-icon">call</div>
+  </div>
+  <div class="simple-label">{{ obj['title'] ?? 'Inbound Call' }}</div>
+  <!-- <div class="material-icons drag-output" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port="source">
+    keyboard_arrow_down
+  </div> -->
+
+  <div class="simple-node-port" data-jtk-source="true" data-jtk-source-port-type="source" ></div>
+</div>

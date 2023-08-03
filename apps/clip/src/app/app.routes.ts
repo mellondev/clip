@@ -1,7 +1,7 @@
-import { loadRemoteModule } from '@nx/angular/mf';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Route } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { EditorComponent } from './workflow/editor/editor.component';
 
 export const APP_ROUTES: Route[] = [
   {
@@ -15,11 +15,8 @@ export const APP_ROUTES: Route[] = [
     ],
   },
   {
-    path: 'login',
-    loadChildren: () =>
-      loadRemoteModule('telxl-users', './LoginModule').then(
-        (m) => m.RemoteEntryModule
-      ),
+    path: 'flow',
+    component: EditorComponent,
   },
   {
     path: '**',

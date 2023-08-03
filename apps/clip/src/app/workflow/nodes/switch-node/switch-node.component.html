@@ -1,0 +1,24 @@
+<div [style.width]="obj['w'] + 'px'" [style.height]="obj['h'] +'px'" class="question" data-jtk-target="true" data-jtk-target-port-type="target" data-jtk-port="target">
+  <div class="q-text" (dblclick)="startEditing()" (blur)="stopEditing()">{{obj['title'] ?? 'QUESTION'}}</div>
+  <div class="q-type-label">
+    <div class="material-icons node-icon">
+      check
+    </div>
+    <div class="q-type-label-text">{{typeLabel}}</div>
+  </div>
+  <div class="labelled-port" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port="yes">
+    <div class="dot-output" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port-id="yes"></div>
+    <div class="dot-output-label" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port-id="yes">Yes</div>
+  </div>
+
+
+  <div class="labelled-port-no" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port="no">
+    <div class="dot-output" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port-id="no"></div>
+    <div class="dot-output-label" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port-id="no">No</div>
+  </div>
+
+
+  <!-- <div class="dot-output-no" data-jtk-source="true" data-jtk-source-port-type="source" data-jtk-port="no">
+    <div class="dot-output-no-label">No</div>
+  </div> -->
+</div>

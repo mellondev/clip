@@ -1,0 +1,31 @@
+<!-- <div class="drawing-canvas">
+  <jsplumb-surface
+    class="js-plumb"
+    toolkitId="toolkitId"
+    surfaceId="surfaceId"
+    [view]="view"
+    [renderParams]="renderParams"
+  ></jsplumb-surface>
+  <jsplumb-miniview class="jtk-miniview" surfaceId="surfaceId"></jsplumb-miniview>
+</div> -->
+
+<div class="container">
+  <header>
+    <div>flowXL</div>
+  </header>
+
+  
+  <div class="velox-flow-toolbox">
+    <!-- <vx-flow-toolbox [toolkitId]="toolkitId" (surveySaved)="surveySaved()"></vx-flow-toolbox> -->
+    <clip-toolbox [toolkitId]="toolkitId"></clip-toolbox>
+  </div>
+
+  <div class="velox-flow-canvas">
+    <jsplumb-surface class="velox-flow-surface" [surfaceId]="surfaceId" [toolkitId]="toolkitId"
+      [renderParams]="renderParams" [view]="view">
+    </jsplumb-surface>
+    <jsplumb-miniview class="jtk-miniview" [surfaceId]="surfaceId"></jsplumb-miniview>
+  </div>
+
+  <footer>flowXL IVR v2</footer>
+</div>

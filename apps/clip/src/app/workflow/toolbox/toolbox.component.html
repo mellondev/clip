@@ -1,0 +1,28 @@
+<div class="toolbox-search">
+  <input mat-input class="search-input" placeholder="Search...">
+  <button mat-stroked-button class="search-button" (click)="relayout()">
+    Layout
+  </button>
+</div>
+<div class="toolbox-header">
+  <div class="toolbox-header-item toolbox-header-item-active">Questions</div>
+  <div class="toolbox-header-item">Rules</div>
+  <div class="toolbox-header-item">Groups</div>
+</div>
+
+<div class="toolbox-tools" jsplumb-surface-drop selector=".toolbox-question" surfaceId="surfaceId" [dataGenerator]="dataGenerator" >
+  <clip-node-tool questionType="yes-no-question" title="Yes No" description="Capture a yes or no answer"
+    iconName="check"></clip-node-tool>
+  <clip-node-tool questionType="text-question" title="Text" description="Single or multiline text" iconName="A">
+  </clip-node-tool>
+  <clip-node-tool questionType="list-question" title="List" description="Single or multi select from list"
+    iconName="list"></clip-node-tool>
+  <clip-node-tool questionType="date-time-question" title="Date/Time" description="Date and or time" iconName="today">
+  </clip-node-tool>
+  <clip-node-tool questionType="numeric-question" title="Numeric" description="Number with or without decimals"
+    iconName="exposure_plus_1"></clip-node-tool>
+  <clip-node-tool questionType="photo-question" title="Photo" description="Capture/select photos"
+    iconName="add_a_photo"></clip-node-tool>
+  <clip-node-tool questionType="option-question" title="Option" description="Select from 1-4 options"
+    iconName="radio_button_checked"></clip-node-tool>
+</div>

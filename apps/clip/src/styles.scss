@@ -125,3 +125,98 @@ body {
 .flex-spacer {
   flex: 1;
 }
+
+@import "../../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
+
+
+.jtk-surface {
+  height: 100%;
+  // background-size: 30px 30px;
+  // background-image: radial-gradient(circle, rgb(200, 200, 200) 1px, rgba(0, 0, 0, 0) 1px); 
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, #E7E7ED 1px, transparent 1px),
+    linear-gradient(to bottom, #E7E7ED 1px, transparent 1px);
+}
+
+.jtk-node {
+  justify-content: unset;
+  align-items: unset;
+  display: block;
+}
+
+.question {
+  position: absolute;
+  line-height: 1.5rem;
+  cursor: move;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: white;
+  border: lightgray 1px solid;
+  border-radius: 8px;
+  min-width: 160px;
+  min-height: 30px;
+  max-width: 260px;
+}
+
+.question:hover {
+  border: #80ACFF 2px solid;
+  box-shadow: 0 0 9px rgba(33, 33, 33, .2);
+  -o-box-shadow: 0 0 9px rgba(33, 33, 33, .2);
+  -webkit-box-shadow: 0 0 9px rgba(33, 33, 33, .2);
+  -moz-box-shadow: 0 0 9px rgba(33, 33, 33, .2);
+}
+
+.drag-output {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  padding-bottom: 2px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.drag-output:hover {
+  background-color: #F7F8F9;
+  border-radius: 8px;
+}
+
+.question-text-editing {
+  cursor: text;
+  display: inline-block;
+  border: none;
+}
+
+.q-text {
+  // min-height: 40px;
+  padding: 12px 12px 4px 12px;
+}
+
+.q-type-label {
+  color: grey;
+  padding: 0px 12px 24px 12px;
+  display: flex;
+  align-items: center;
+}
+
+
+.q-type-label-text {
+  margin-left: 6px;
+  font-size: 10pt;
+}
+
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+.edge-label {
+  background-color: white;
+  padding: 10px;
+}
+
+.node-icon {
+  color: #6B6C7E;
+  font-size: 18px;
+}

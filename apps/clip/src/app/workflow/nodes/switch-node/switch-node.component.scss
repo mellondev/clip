@@ -1,0 +1,90 @@
+.dot-output {
+  height: 14px;
+  width: 14px;
+  background-color: #bbb;
+  border-radius: 50%;
+  // display: inline-block;
+  bottom: -19px;
+  // left: 28px;
+  // position: absolute;
+  // cursor: pointer;
+  // text-align: center;
+}
+
+.labelled-port {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  align-items: center;
+  bottom: -32px;
+  left: 28px;
+  position: absolute;
+  cursor: pointer;
+}
+
+
+.labelled-port-no {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+  align-items: center;
+  bottom: -32px;
+  right: 28px;
+  position: absolute;
+  cursor: pointer;
+}
+
+
+.dot-endpoint {
+  color: #6B6C7E;
+  font-size: 22px;
+  line-height: 1.25;
+  width: 28px;
+  background-color: #F7F8F9;
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.dot-output-label {
+  font-size: 10pt;
+}
+
+.dot-output-no {
+  height: 14px;
+  width: 14px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  bottom: -9px;
+  right: 28px;
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dot-output-no-label {
+  font-size: 10pt;
+  bottom: -14px;
+  position: relative;
+}
+
+
+.tb-question-icon {
+  color: #D3D6E0;
+  margin-left: 10px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.material-icons.tb-question-icon {
+  color: #6B6C7E;
+  font-size: 22px;
+  line-height: 1.25;
+  width: 28px;
+  background-color: #F7F8F9;
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 2px;
+}
