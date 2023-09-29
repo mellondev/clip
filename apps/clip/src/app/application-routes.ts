@@ -11,7 +11,7 @@ export interface ApplicationRoute {
   // hideOnFeatures?: string[];
 }
 
-export const DEFAULT_APPLICATION_ROUTES: ApplicationRoute[] = [
+export const DEFAULT_APP_ROUTES: ApplicationRoute[] = [
   {
     id: 'clipDashboardLink',
     text: 'Dashboard',

@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
   inject,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import {
   CompactType,
   DisplayGrid,
@@ -14,6 +14,7 @@ import {
   GridsterItem,
   GridType,
 } from 'angular-gridster2';
+
 import { DashboardFeatureWidget } from './dashboard-feature-widget';
 import {
   DashboardItem,
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
   private featureService = inject(FeatureService);
   private dashboardService = inject(DashboardService);
 
-  destroyRef = inject(DestroyRef)
+  destroyRef = inject(DestroyRef);
   user$ = this.userService.user$;
   options: GridsterConfig;
   dashboard: GridsterItem[] = [];
@@ -62,28 +63,26 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dashboard = [];
 
-    this.featureService.features$
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((resp) => {
-        console.log('features', resp);
-        this.dashboard = this.dashboardService.loadDashboard().map((item) => {
-          const feature = resp.find((f) => f.name === item.featureName);
-          const widget = feature?.dashboardWidgets?.find(
-            (w) => w.name === item.widgetName
-          );
-          return {
-            x: item.x,
-            y: item.y,
-            rows: item.rows,
-            cols: item.cols,
-            featureWidget: { feature, widget },
-            featureName: item.featureName,
-            widgetName: item.widgetName
-          };
-        });
-        console.log(this.dashboard);
-        this.isLoading = false;
-      });
+    const features = this.featureService.features();
+
+    this.dashboard = this.dashboardService.loadDashboard().map((item) => {
+      const feature = features.find((f) => f.name === item.featureName);
+      const widget = feature?.dashboardWidgets?.find(
+        (w) => w.name === item.widgetName
+      );
+      return {
+        x: item.x,
+        y: item.y,
+        rows: item.rows,
+        cols: item.cols,
+        featureWidget: { feature, widget },
+        featureName: item.featureName,
+        widgetName: item.widgetName,
+      };
+    });
+
+    console.log(this.dashboard);
+    this.isLoading = false;
   }
 
   changedOptions() {
@@ -102,7 +101,7 @@ export class DashboardComponent implements OnInit {
             rows: item.rows,
             cols: item.cols,
             featureName: item.featureWidget?.feature?.name,
-            widgetName: item.featureWidget?.widget?.name
+            widgetName: item.featureWidget?.widget?.name,
           };
         }
       );
@@ -142,7 +141,7 @@ export class DashboardComponent implements OnInit {
       y: 0,
       rows: 4,
       cols: 4,
-      featureWidget
+      featureWidget,
     });
 
     console.log(this.dashboard);

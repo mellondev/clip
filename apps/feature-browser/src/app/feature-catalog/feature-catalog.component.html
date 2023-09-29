@@ -6,7 +6,7 @@
     <div class="featured-banner">
       <clip-featured-item
         [feature]="feature"
-        *ngFor="let feature of featured$ | async"
+        *ngFor="let feature of featured()"
       />
     </div>
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" dynamicHeight="true" animationDuration="0ms">
@@ -25,7 +25,7 @@
         <div class="feature-listing">
           <div
             class="feature-list-item"
-            *ngFor="let feature of installedFeatures$ | async"
+            *ngFor="let feature of installedFeatures()"
           >
             <div class="feature-container">
               <mat-icon class="feature-icon">{{ feature.icon }}</mat-icon>

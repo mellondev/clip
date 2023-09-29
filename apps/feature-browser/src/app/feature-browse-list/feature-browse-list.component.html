@@ -1,6 +1,6 @@
 <div class="feature-list">
   <clip-feature-item
     [feature]="feature"
-    *ngFor="let feature of features$ | async"
+    *ngFor="let feature of features()"
   />
 </div>
