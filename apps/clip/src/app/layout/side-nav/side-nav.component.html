@@ -1,6 +1,6 @@
 <mat-toolbar><mat-icon>link</mat-icon><span>CLiP</span></mat-toolbar>
 <mat-nav-list>
-  <ng-container *ngFor="let sideNavItem of sideNavItems">
+  <ng-container *ngFor="let sideNavItem of sideNavItems()">
     <a
       mat-list-item
       *ngIf="!sideNavItem.subItems || sideNavItem.subItems?.length === 0"

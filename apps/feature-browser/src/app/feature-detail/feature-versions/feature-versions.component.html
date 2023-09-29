@@ -1,6 +1,6 @@
 <div class="content">
-  <div class="feature-listing" *ngIf="feature$ | async as feature">
-    <div class="feature-list-item" *ngFor="let version of feature.versions">
+  <div class="feature-listing" *ngIf="feature">
+    <div class="feature-list-item" *ngFor="let version of feature?.versions">
       <div class="feature-container">
         <div class="feature-version">{{ version.version }}</div>
         <div class="feature-detail">

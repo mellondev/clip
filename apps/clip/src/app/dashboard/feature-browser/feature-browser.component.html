@@ -1,8 +1,12 @@
 <h2>Add widget</h2>
 
-<div class="feature-container" *ngFor="let feature of features$ | async">
+<div class="feature-container" *ngFor="let feature of features()">
   <div mat-subheader>{{ feature.title }}</div>
-  <div class="feature-item" *ngFor="let widget of feature.dashboardWidgets"  (click)="addWidget({feature, widget})">
+  <div
+    class="feature-item"
+    *ngFor="let widget of feature.dashboardWidgets"
+    (click)="addWidget({feature, widget})"
+  >
     <div class="material-icons feature-icon">add</div>
     <div class="feature-info">
       <div class="feature-name">{{ widget.title }}</div>
@@ -10,17 +14,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- <mat-list>
-  <ng-container *ngFor="let feature of features$ | async">
-    <div mat-subheader>{{ feature.title }}</div>
-    <mat-list-item *ngFor="let widget of feature.dashboardWidgets">
-      <div matListItemIcon (click)="addWidget({feature, widget})">
-        <mat-icon>add</mat-icon>
-      </div>
-      <div matListItemTitle>{{ widget.title }}</div>
-      <div matListItemLine>{{ widget.description }}</div>
-    </mat-list-item>
-  </ng-container>
-</mat-list> -->
