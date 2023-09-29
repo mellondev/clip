@@ -17,7 +17,7 @@ import {
   providedIn: 'root',
 })
 export class CatalogService {
-  featuresUrl = 'http://localhost:4202/assets/feature-catalog.json';
+  featuresUrl = 'https://clipfeaturebrowser.z33.web.core.windows.net/assets/feature-catalog.json';
 
   private featureService = inject(FeatureService);
 
